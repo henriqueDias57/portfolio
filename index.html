@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Henrique Dias | Portfólio Profissional — Engenharia da Computação & TI</title>
+  <meta name="description" content="Portfólio profissional de Henrique Dias: Estudante de Engenharia da Computação na UNITAU e Estagiário de TI no INSS. Projetos web, suporte técnico e engenharia.">
+  <meta name="author" content="Henrique Dias">
+
+  <!-- Favicon & Fonts -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HEADER & NAVEGAÇÃO
+       ========================================================================== -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">H</div>
+        <div class="logo-text">
+          <span data-i18n="header.logoName">Henrique Dias</span>
+          <span data-i18n="header.logoSub">Portfólio</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link" data-i18n="header.navAbout">Sobre</a></li>
+          <li><a href="#experience" class="nav-link" data-i18n="header.navExperience">Experiência</a></li>
+          <li><a href="#education" class="nav-link" data-i18n="header.navEducation">Formação</a></li>
+          <li><a href="#projects" class="nav-link" data-i18n="header.navProjects">Projetos</a></li>
+          <li><a href="#skills" class="nav-link" data-i18n="header.navSkills">Habilidades</a></li>
+          <li><a href="#extracurricular" class="nav-link" data-i18n="header.navExtras">Voluntariado</a></li>
+          <li><a href="#contact" class="nav-link" data-i18n="header.navContact">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Botão de Alternância de Idioma (PT / EN) -->
+        <button class="lang-btn" id="langToggle" aria-label="Alternar idioma">
+          <span class="lang-globe">🌐</span>
+          <span id="langBtnText" data-i18n="header.langText">EN</span>
+        </button>
+
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION
+         ========================================================================== -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="badge badge-status" data-i18n="hero.badge">🟢 Aberto a Oportunidades (Estágio / Júnior)</div>
+          <p class="hero-greeting" data-i18n="hero.greeting">Olá, eu sou</p>
+          <h1 class="hero-name" data-i18n="hero.name">Henrique Dias</h1>
+          <h2 class="hero-role" data-i18n="hero.role">Estudante de Engenharia da Computação & Estagiário de TI</h2>
+          <p class="hero-subtitle" data-i18n="hero.subtitle">
+            Desenvolvedor Web e profissional de tecnologia focado em criar soluções eficientes, otimização de sistemas e suporte técnico avançado.
+          </p>
+          <div class="hero-location" data-i18n="hero.location">📍 Taubaté, SP — Brasil (Presencial, Híbrido ou Remoto)</div>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary" data-i18n="hero.ctaProjects">Ver Projetos 🚀</a>
+            <a href="#contact" class="btn btn-outline" data-i18n="hero.ctaContact">Entre em Contato 💬</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SOBRE MIM
+         ========================================================================== -->
+    <section class="section about" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge" data-i18n="about.badge">Perfil Profissional</span>
+          <h2 class="section-title" data-i18n="about.title">Sobre Mim</h2>
+          <p class="section-subtitle" data-i18n="about.subtitle">Tecnologia, Engenharia e Soluções com Impacto Real</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card about-text">
+            <p data-i18n="about.paragraph1">
+              Sou estudante do 6º semestre de Engenharia da Computação na Universidade de Taubaté (UNITAU) e Estagiário de TI no INSS. Apaixonado por tecnologia, busco constantemente aprender e aplicar boas práticas de desenvolvimento de software e gerenciamento de TI.
+            </p>
+            <p data-i18n="about.paragraph2">
+              Minha trajetória une a rigidez técnica e lógica da engenharia com a vivência prática em desenvolvimento web (HTML, CSS, JavaScript, Python) e o atendimento ágil de suporte a sistemas e infraestrutura de computadores.
+            </p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-box">
+              <div class="stat-number" data-i18n="about.stat1Num">6º Semestre</div>
+              <div class="stat-label" data-i18n="about.stat1Label">Engenharia da Computação (UNITAU)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number" data-i18n="about.stat2Num">2 Projetos</div>
+              <div class="stat-label" data-i18n="about.stat2Label">Reais em Produção no GitHub</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number" data-i18n="about.stat3Num">INSS</div>
+              <div class="stat-label" data-i18n="about.stat3Label">Experiência Prática em TI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         EXPERIÊNCIA PROFISSIONAL
+         ========================================================================== -->
+    <section class="section experience" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge" data-i18n="experience.badge">Carreira</span>
+          <h2 class="section-title" data-i18n="experience.title">Experiência Profissional</h2>
+          <p class="section-subtitle" data-i18n="experience.subtitle">Atuação prática no mercado corporativo e setor público</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-company" data-i18n="experience.company">INSS · Instituto Nacional do Seguro Social</div>
+                  <h3 class="exp-role" data-i18n="experience.role">Estagiário de TI</h3>
+                </div>
+                <div class="exp-period" data-i18n="experience.period">Agosto de 2025 — Presente</div>
+              </div>
+              <ul class="exp-tasks" id="expTasksList">
+                <!-- Preenchido dinamicamente pelo script.js via i18n -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FORMAÇÃO ACADÊMICA
+         ========================================================================== -->
+    <section class="section education" id="education">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge" data-i18n="education.badge">Conhecimento</span>
+          <h2 class="section-title" data-i18n="education.title">Formação Acadêmica & Cursos</h2>
+          <p class="section-subtitle" data-i18n="education.subtitle">Base teórica sólida combinada com qualificação técnica</p>
+        </div>
+
+        <div class="education-grid">
+          <div class="edu-card">
+            <div>
+              <span class="edu-badge">Graduação / Bacharelado</span>
+              <h3 class="edu-title" data-i18n="education.item1Degree">Bacharelado em Engenharia da Computação</h3>
+              <div class="edu-institution" data-i18n="education.item1Institution">Universidade de Taubaté (UNITAU)</div>
+              <div class="edu-period" data-i18n="education.item1Period">2024 — 2028 (Em andamento · 6º semestre)</div>
+            </div>
+            <p class="edu-desc" data-i18n="education.item1Desc">
+              Formação completa cobrindo arquitetura de computadores, sistemas operacionais, estrutura de dados, redes e engenharia de software.
+            </p>
+          </div>
+
+          <div class="edu-card">
+            <div>
+              <span class="edu-badge">Curso Técnico Integrado</span>
+              <h3 class="edu-title" data-i18n="education.item2Degree">Curso Técnico Integrado em Programação</h3>
+              <div class="edu-institution" data-i18n="education.item2Institution">OneBitCode</div>
+              <div class="edu-period" data-i18n="education.item2Period">Janeiro de 2024 — Dezembro de 2025</div>
+            </div>
+            <p class="edu-desc" data-i18n="education.item2Desc">
+              Treinamento prático e intensivo focado em Desenvolvimento Web (HTML5, CSS3, JavaScript ES6+), lógica de programação, Python e Git/GitHub.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PROJETOS RELEVANTES
+         ========================================================================== -->
+    <section class="section projects" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge" data-i18n="projects.badge">Portfólio</span>
+          <h2 class="section-title" data-i18n="projects.title">Projetos Relevantes</h2>
+          <p class="section-subtitle" data-i18n="projects.subtitle">Aplicações web desenvolvidas com foco em resultados e qualidade</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Projeto 1: Portal Ferreira Imóveis -->
+          <div class="project-card">
+            <div>
+              <div class="project-tag" data-i18n="projects.proj1Tag">Sistema Imobiliário & SEO Local</div>
+              <h3 class="project-title" data-i18n="projects.proj1Title">Portal Ferreira Imóveis</h3>
+              <p class="project-desc" data-i18n="projects.proj1Desc">
+                Portal institucional e sistema de gestão imobiliária para a Ferreira Imóveis (Cruzeiro e Ubatuba/SP), construído com Google Antigravity, focando em excelente UX e estratégias de SEO local.
+              </p>
+              <div class="project-techs">
+                <span class="tech-pill">Google Antigravity</span>
+                <span class="tech-pill">SEO Local</span>
+                <span class="tech-pill">Web Dev</span>
+                <span class="tech-pill">TypeScript / JS</span>
+              </div>
+            </div>
+            <a href="https://github.com/henriqueDias57/ferreira-imoveis" target="_blank" rel="noopener noreferrer" class="btn btn-outline project-btn" data-i18n="projects.proj1RepoBtn">
+              Ver Repositório no GitHub ↗
+            </a>
+          </div>
+
+          <!-- Projeto 2: Landing Page Advocacia Mariana -->
+          <div class="project-card">
+            <div>
+              <div class="project-tag" data-i18n="projects.proj2Tag">Landing Page Institucional</div>
+              <h3 class="project-title" data-i18n="projects.proj2Title">Landing Page Advocacia Mariana</h3>
+              <p class="project-desc" data-i18n="projects.proj2Desc">
+                Landing page profissional desenvolvida para escritório de advocacia, focada em posicionamento de autoridade, apresentação clara de serviços jurídicos e captação de clientes.
+              </p>
+              <div class="project-techs">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS3</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">UX/UI Design</span>
+              </div>
+            </div>
+            <a href="https://github.com/henriqueDias57/site---Advogada-Mariana-" target="_blank" rel="noopener noreferrer" class="btn btn-outline project-btn" data-i18n="projects.proj2RepoBtn">
+              Ver Repositório no GitHub ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         HABILIDADES TÉCNICAS
+         ========================================================================== -->
+    <section class="section skills" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge" data-i18n="skills.badge">Competências</span>
+          <h2 class="section-title" data-i18n="skills.title">Habilidades Técnicas</h2>
+          <p class="section-subtitle" data-i18n="skills.subtitle">Tecnologias e ferramentas dominadas</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3 class="category-title"><span data-i18n="skills.cat1Title">Desenvolvimento Web & Software</span></h3>
+            <div class="skill-list">
+              <span class="skill-tag">🐍 Python</span>
+              <span class="skill-tag">⚡ JavaScript (ES6+)</span>
+              <span class="skill-tag">🌐 HTML5</span>
+              <span class="skill-tag">🎨 CSS3</span>
+              <span class="skill-tag">💻 Desenvolvimento Web</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="category-title"><span data-i18n="skills.cat2Title">Sistemas & Infraestrutura</span></h3>
+            <div class="skill-list">
+              <span class="skill-tag">🛠️ Suporte Técnico</span>
+              <span class="skill-tag">🔌 Engenharia de Hardware</span>
+              <span class="skill-tag">🖥️ Manutenção de Computadores</span>
+              <span class="skill-tag">📡 Diagnóstico de Redes</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="category-title"><span data-i18n="skills.cat3Title">Engenharia & Ferramentas</span></h3>
+            <div class="skill-list">
+              <span class="skill-tag">🐙 Git / GitHub</span>
+              <span class="skill-tag">🚀 Google Antigravity</span>
+              <span class="skill-tag">🎯 SEO Local</span>
+              <span class="skill-tag">📐 Lógica de Programação</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         EXTRACURRICULAR / VOLUNTARIADO
+         ========================================================================== -->
+    <section class="section extracurricular" id="extracurricular">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge" data-i18n="extracurricular.badge">Impacto Social & Acadêmico</span>
+          <h2 class="section-title" data-i18n="extracurricular.title">Extracurricular & Voluntariado</h2>
+          <p class="section-subtitle" data-i18n="extracurricular.subtitle">Projetos comunitários e participação científica</p>
+        </div>
+
+        <div class="extra-grid">
+          <div class="extra-card">
+            <div class="extra-icon">🔬</div>
+            <h3 class="extra-title" data-i18n="extracurricular.item1Title">Science Day (São José dos Campos)</h3>
+            <div class="extra-role" data-i18n="extracurricular.item1Role">Representante UNITAU · Desenvolvedor de Jogo</div>
+            <p class="extra-desc" data-i18n="extracurricular.item1Desc">
+              Participou do Science Day em São José dos Campos representando a UNITAU, apresentando um jogo interativo desenvolvido pela equipe de alunos para demonstrar princípios de programação e tecnologia.
+            </p>
+          </div>
+
+          <div class="extra-card">
+            <div class="extra-icon">🤝</div>
+            <h3 class="extra-title" data-i18n="extracurricular.item2Title">Ações Sociais & Trabalho Voluntário</h3>
+            <div class="extra-role" data-i18n="extracurricular.item2Role">Voluntário Social em Cruzeiro/SP</div>
+            <p class="extra-desc" data-i18n="extracurricular.item2Desc">
+              Atuação voluntária em ações comunitárias promovidas pela igreja em Cruzeiro/SP, participando ativamente da distribuição semanal de sopa e cobertores para pessoas em situação de rua.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CONTATO & FOOTER
+         ========================================================================== -->
+    <section class="section contact" id="contact">
+      <div class="container contact-container">
+        <div class="section-header">
+          <span class="badge" data-i18n="contact.badge">Conexão</span>
+          <h2 class="section-title" data-i18n="contact.title">Vamos Conversar?</h2>
+          <p class="section-subtitle" data-i18n="contact.subtitle">Estou aberto a novas oportunidades profissionais!</p>
+          <p style="color: var(--text-muted); margin-top: 1rem; line-height: 1.7;" data-i18n="contact.text">
+            Se você procura um estagiário ou desenvolvedor júnior dedicado, com forte capacidade de aprendizado e paixão por tecnologia, entre em contato comigo através dos canais abaixo.
+          </p>
+        </div>
+
+        <div class="contact-cards">
+          <a href="https://github.com/henriqueDias57" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <div class="contact-icon">🐙</div>
+            <div>
+              <div class="contact-card-title" data-i18n="contact.githubCardTitle">GitHub</div>
+              <div class="contact-card-sub" data-i18n="contact.githubCardSub">Confira meus repositórios e códigos públicos</div>
+            </div>
+          </a>
+
+          <a href="https://www.linkedin.com/in/henrique-dias-5411a8355/" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <div class="contact-icon">💼</div>
+            <div>
+              <div class="contact-card-title" data-i18n="contact.linkedinCardTitle">LinkedIn</div>
+              <div class="contact-card-sub" data-i18n="contact.linkedinCardSub">Conecte-se comigo profissionalmente</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="contact.footerCopyright">© 2026 Henrique Dias. Desenvolvido com HTML, CSS e JS Nativo.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/translations.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
