@@ -234,15 +234,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================================
-  // 6. SCROLL PROGRESS BAR
+  // 6. SCROLL PROGRESS BAR (THROTTLED WITH RAF)
   // ============================================================
   const scrollBar = document.getElementById('scrollProgress');
   if (scrollBar) {
+    let ticking = false;
     window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      const docH      = document.documentElement.scrollHeight - window.innerHeight;
-      const pct       = docH > 0 ? (scrollTop / docH) * 100 : 0;
-      scrollBar.style.height = pct + '%';
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollTop = window.scrollY;
+          const docH      = document.documentElement.scrollHeight - window.innerHeight;
+          const pct       = docH > 0 ? (scrollTop / docH) * 100 : 0;
+          scrollBar.style.height = pct + '%';
+          ticking = false;
+        });
+        ticking = true;
+      }
     }, { passive: true });
   }
 
@@ -481,37 +488,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================================
-  // 15. LENIS SMOOTH SCROLL
-  // ============================================================
-  function initLenis() {
-    if (typeof Lenis === 'undefined' || prefersReducedMotion) return;
-
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      wheelMultiplier: 0.85,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    // Integração com ScrollTrigger GSAP
-    if (typeof ScrollTrigger !== 'undefined') {
-      lenis.on('scroll', ScrollTrigger.update);
-    }
-  }
-
-  // ============================================================
-  // 16. INICIALIZAÇÃO
+  // 15. INICIALIZAÇÃO NATIVA FLUIDA
   // ============================================================
   function init() {
     updateLanguage(currentLang);
     initGSAP();
-    initLenis();
   }
 
   // Aguarda boot sequence ou inicializa direto
