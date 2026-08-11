@@ -150,36 +150,41 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================================
-  // 4. CURSOR CUSTOMIZADO NEXUS
+  // 4. CURSOR CUSTOMIZADO NEXUS (GPU ACCELERATED)
   // ============================================================
   const cursor     = document.getElementById('nexusCursor');
   const cursorRing = document.getElementById('nexusCursorRing');
 
   if (cursor && cursorRing && !prefersReducedMotion && window.innerWidth >= 768) {
-    let rX = 0, rY = 0;
+    let mX = -100, mY = -100;
+    let rX = -100, rY = -100;
+    let isMoving = false;
 
     document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top  = e.clientY + 'px';
+      mX = e.clientX;
+      mY = e.clientY;
+      cursor.style.transform = `translate3d(${mX - 6}px, ${mY - 6}px, 0)`;
+      isMoving = true;
+    }, { passive: true });
 
-      // Ring segue com leve inércia via lerp
-      rX += (e.clientX - rX) * 0.12;
-      rY += (e.clientY - rY) * 0.12;
-    });
-
-    // Smooth ring update em RAF
     function updateRing() {
       requestAnimationFrame(updateRing);
-      cursorRing.style.left = rX + 'px';
-      cursorRing.style.top  = rY + 'px';
+      if (!isMoving && Math.abs(mX - rX) < 0.1 && Math.abs(mY - rY) < 0.1) return;
+
+      rX += (mX - rX) * 0.15;
+      rY += (mY - rY) * 0.15;
+      cursorRing.style.transform = `translate3d(${rX - 19}px, ${rY - 19}px, 0)`;
+
+      if (Math.abs(mX - rX) < 0.05 && Math.abs(mY - rY) < 0.05) {
+        isMoving = false;
+      }
     }
     updateRing();
 
-    // Expande ring em elementos interativos
     const interactiveEls = 'a, button, .heat-cell, .ide-card, .contact-link-card, .nav-link, .stat-node';
     document.querySelectorAll(interactiveEls).forEach(el => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'), { passive: true });
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'), { passive: true });
     });
   }
 
