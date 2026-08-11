@@ -116,9 +116,9 @@ const translations = {
       item1Title: "Science Day (São José dos Campos)",
       item1Role: "Representante UNITAU · Desenvolvedor de Jogo",
       item1Desc: "Apresentação de jogo interativo desenvolvido pela equipe de alunos no Science Day em São José dos Campos, representando a UNITAU com foco em lógica de programação.",
-      item2Title: "Ações Sociais & Trabalho Voluntário",
-      item2Role: "Voluntário Social em Cruzeiro/SP",
-      item2Desc: "Engajamento semanal em ações comunitárias em Cruzeiro/SP para apoio a pessoas em situação de vulnerabilidade com distribuição de refeições e agasalhos."
+      item2Title: "Ação Social Institucional (INSS)",
+      item2Role: "Estagiário de TI · Atendimento PopRua",
+      item2Desc: "Participei, através do meu estágio no INSS, de uma ação institucional de atendimento à população em situação de rua, levando orientações sobre benefícios previdenciários e assistenciais a pessoas em situação de vulnerabilidade social."
     },
     contact: {
       badge: "SYS.CONNECT",
@@ -256,9 +256,9 @@ const translations = {
       item1Title: "Science Day (São José dos Campos)",
       item1Role: "UNITAU Representative · Game Developer",
       item1Desc: "Showcased an interactive game developed by student team at Science Day in São José dos Campos, representing UNITAU with focus on coding logic.",
-      item2Title: "Social Outreach & Volunteer Work",
-      item2Role: "Community Volunteer in Cruzeiro/SP",
-      item2Desc: "Weekly engagement in church social initiatives in Cruzeiro/SP supporting unhoused individuals with meal and warm clothing distribution."
+      item2Title: "Institutional Social Action (INSS)",
+      item2Role: "IT Intern · Homeless Assistance Outreach",
+      item2Desc: "Took part, through my internship at INSS (Brazil's National Social Security Institute), in an institutional outreach action providing assistance to people experiencing homelessness, offering guidance on social security and welfare benefits to individuals in situations of social vulnerability."
     },
     contact: {
       badge: "SYS.CONNECT",
