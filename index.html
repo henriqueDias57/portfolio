@@ -3,128 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Henrique Dias | Computer Engineering & IT Portfolio</title>
+  <title>Henrique Dias | NEXUS OS — Computer Engineering &amp; IT</title>
   <meta name="description" content="Portfólio de Henrique Dias: Estudante de Engenharia da Computação na UNITAU e Estagiário de TI no INSS. Desenvolvimento Web, Automação e Infraestrutura de TI.">
   <meta name="author" content="Henrique Dias">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
-
-  <!-- Google Fonts & Stylesheet -->
+  <!-- Google Fonts + Design System -->
   <link rel="stylesheet" href="styles.css">
 
-  <!-- GSAP & ScrollTrigger via CDN -->
+  <!-- Three.js via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- GSAP + ScrollTrigger via CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
 </head>
 <body>
 
-  <!-- Fundo Canvas Interativo Cyber Matrix -->
-  <canvas id="bgCanvas"></canvas>
+  <!-- ========================================================================
+       BOOT SEQUENCE OVERLAY
+       ======================================================================== -->
+  <div id="bootOverlay" role="status" aria-label="Inicializando sistema">
+    <div class="boot-logo">NEXUS_OS</div>
+    <div class="boot-version">// v2.6 · henrique-dias · computer-engineering</div>
+    <div class="boot-log" id="bootLog">
+      <!-- Linhas injetadas via boot.js -->
+    </div>
+    <span class="boot-cursor"></span>
+  </div>
 
-  <!-- ==========================================================================
-       HEADER & NAVEGAÇÃO
-       ========================================================================== -->
-  <header class="header">
-    <div class="container header-container">
-      <a href="#" class="logo">
-        <div class="logo-tag" data-i18n="header.logoName">&lt;HD /&gt;</div>
-        <div class="logo-text">
-          <span>Henrique Dias</span>
-          <span style="font-size: 0.65rem; color: var(--accent-cyan);" data-i18n="header.logoSub">Engineering</span>
+  <!-- ========================================================================
+       CURSOR CUSTOMIZADO NEXUS CROSSHAIR
+       ======================================================================== -->
+  <div id="nexusCursor" aria-hidden="true"></div>
+  <div id="nexusCursorRing" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       HUD OVERLAY — HEADS-UP DISPLAY
+       ======================================================================== -->
+  <div id="hud" aria-hidden="true">
+    <div class="hud-line">
+      <span class="hud-label">MODULE</span>
+      <span class="hud-value" id="hudModule">SYS/HERO</span>
+    </div>
+    <div class="hud-line">
+      <span class="hud-label">CUR.X</span>
+      <span class="hud-value" id="hudX">0000</span>
+    </div>
+    <div class="hud-line">
+      <span class="hud-label">CUR.Y</span>
+      <span class="hud-value" id="hudY">0000</span>
+    </div>
+    <div class="hud-line">
+      <span class="hud-label">NEXUS</span>
+      <span class="hud-value" style="color: var(--green);">ONLINE</span>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       HEADER — NEXUS OS TOPBAR
+       ======================================================================== -->
+  <header class="header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#" class="logo" aria-label="Início — NEXUS OS">
+        <div class="logo-hex">&lt;HD/&gt;</div>
+        <div class="logo-info">
+          <div class="logo-name">Henrique Dias</div>
+          <div class="logo-sys" data-i18n="header.logoSub">NEXUS OS · Engineering</div>
         </div>
       </a>
 
-      <nav class="nav-menu" id="navMenu">
-        <ul class="nav-list">
-          <li><a href="#about" class="nav-link" data-i18n="header.navAbout">Sobre</a></li>
-          <li><a href="#experience" class="nav-link" data-i18n="header.navExperience">Experiência</a></li>
-          <li><a href="#education" class="nav-link" data-i18n="header.navEducation">Formação</a></li>
-          <li><a href="#projects" class="nav-link" data-i18n="header.navProjects">Projetos</a></li>
-          <li><a href="#skills" class="nav-link" data-i18n="header.navSkills">Habilidades</a></li>
-          <li><a href="#extracurricular" class="nav-link" data-i18n="header.navExtras">Voluntariado</a></li>
-          <li><a href="#contact" class="nav-link" data-i18n="header.navContact">Contato</a></li>
+      <nav class="nav-menu" id="navMenu" aria-label="Navegação principal">
+        <ul class="nav-list" id="navList">
+          <li><a href="#about"          class="nav-link" data-i18n="header.navAbout"      data-section="about">sys/profile</a></li>
+          <li><a href="#experience"     class="nav-link" data-i18n="header.navExperience" data-section="experience">log/exp</a></li>
+          <li><a href="#education"      class="nav-link" data-i18n="header.navEducation"  data-section="education">academy.db</a></li>
+          <li><a href="#projects"       class="nav-link" data-i18n="header.navProjects"   data-section="projects">deploy/</a></li>
+          <li><a href="#skills"         class="nav-link" data-i18n="header.navSkills"     data-section="skills">stack.matrix</a></li>
+          <li><a href="#extracurricular" class="nav-link" data-i18n="header.navExtras"   data-section="extracurricular">community</a></li>
+          <li><a href="#contact"        class="nav-link" data-i18n="header.navContact"    data-section="contact">connect.sh</a></li>
         </ul>
       </nav>
 
       <div class="header-actions">
-        <!-- Botão i18n Estilo LED Terminal -->
         <button class="lang-btn" id="langToggle" aria-label="Alternar idioma">
-          <span>🌐</span>
+          <span class="lang-dot" aria-hidden="true"></span>
           <span id="langBtnText" data-i18n="header.langText">EN</span>
         </button>
-
-        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Abrir menu">
-          <span></span>
-          <span></span>
-          <span></span>
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Abrir menu" aria-expanded="false">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- ==========================================================================
-         HERO SECTION (2 COLUNAS + TERMINAL INTERATIVO)
-         ========================================================================== -->
+    <!-- ========================================================================
+         HERO — NEXUS COMMAND CENTER
+         ======================================================================== -->
     <section class="hero" id="hero">
+      <!-- Canvas Three.js — Partícula 3D -->
+      <canvas id="nexusCanvas" aria-hidden="true"></canvas>
+
       <div class="container">
         <div class="hero-grid">
-          <div class="hero-content">
-            <div class="badge-tech badge-status">
-              <span class="status-dot"></span>
-              <span data-i18n="hero.badge">🟢 LIVE // Aberto a Estágio & Nível Júnior</span>
+
+          <!-- Painel Esquerdo: Identidade -->
+          <div class="hero-content" id="heroContent">
+            <div class="hero-status">
+              <span class="status-pulse" aria-hidden="true"></span>
+              <span data-i18n="hero.badge">● NEXUS // ONLINE — Aberto a Estágio &amp; Nível Júnior</span>
             </div>
-            <div class="hero-code-prompt" data-i18n="hero.greeting">const developer =</div>
-            <h1 class="hero-name" data-i18n="hero.name">Henrique Dias;</h1>
-            <h2 class="hero-role" data-i18n="hero.role">Engenharia da Computação & TI</h2>
-            <p class="hero-subtitle" data-i18n="hero.subtitle">
+
+            <div>
+              <div class="hero-eyebrow" data-i18n="hero.greeting">$ init developer --name</div>
+              <h1 class="hero-name">
+                HENRIQUE<span class="name-underscore">_</span>DIAS<span class="name-underscore">;</span>
+              </h1>
+              <div class="hero-role" data-i18n="hero.role">Engenharia da Computação &amp; TI</div>
+            </div>
+
+            <p class="hero-desc" data-i18n="hero.subtitle">
               Desenvolvedor Web e profissional de TI focado em criar sistemas eficientes, automação e infraestrutura técnica de alta disponibilidade.
             </p>
-            <div class="hero-location" data-i18n="hero.location">📍 Taubaté, SP — Brasil (Presencial, Híbrido ou Remoto)</div>
-            <div class="hero-buttons">
-              <a href="#projects" class="btn btn-primary" data-i18n="hero.ctaProjects">Explorar Projetos 🚀</a>
-              <a href="#contact" class="btn btn-outline" data-i18n="hero.ctaContact">Iniciar Contato 💬</a>
+
+            <div class="hero-meta" data-i18n="hero.location">
+              Taubaté, SP — Brasil (Presencial, Híbrido ou Remoto)
+            </div>
+
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary" data-i18n="hero.ctaProjects">
+                <span>⚡</span> Explorar Projetos
+              </a>
+              <a href="#contact" class="btn btn-ghost" data-i18n="hero.ctaContact">
+                <span>→</span> Iniciar Contato
+              </a>
             </div>
           </div>
 
-          <!-- Terminal Interativo de Engenharia -->
-          <div class="terminal-window">
-            <div class="terminal-header">
-              <div class="terminal-dots">
-                <span class="dot dot-red"></span>
-                <span class="dot dot-yellow"></span>
-                <span class="dot dot-green"></span>
+          <!-- Painel Direito: Terminal NEXUS -->
+          <div class="hero-panel" id="heroPanel">
+            <div class="terminal-window" id="terminalWindow">
+              <div class="terminal-titlebar">
+                <div class="terminal-dots" aria-hidden="true">
+                  <span class="dot dot-r"></span>
+                  <span class="dot dot-y"></span>
+                  <span class="dot dot-g"></span>
+                </div>
+                <div class="terminal-title-text" data-i18n="terminal.headerTitle">bash — henrique@nexus-node: ~</div>
+                <div class="terminal-version">v2.6</div>
               </div>
-              <div class="terminal-title" data-i18n="terminal.headerTitle">bash - henrique@unitau-node: ~</div>
-              <div style="font-size: 0.75rem; color: var(--accent-cyan);">v2.6</div>
-            </div>
-            <div class="terminal-body" id="terminalBody">
-              <div class="terminal-welcome" id="terminalWelcome">SYSTEM_BOOT :: Inicializando nó de Henrique Dias...</div>
-              <div class="terminal-output" id="terminalOutput"></div>
-              <div class="terminal-input-line">
-                <span class="terminal-prompt" id="terminalPromptText">henrique@unitau:~$</span>
-                <input type="text" class="terminal-input" id="terminalInput" placeholder="digite 'help'..." autocomplete="off">
+
+              <div class="terminal-body" id="terminalBody">
+                <div class="terminal-welcome" id="terminalWelcome">NEXUS_OS v2.6 :: Node inicializado.</div>
+                <div class="terminal-output" id="terminalOutput"></div>
+                <div class="terminal-prompt-line">
+                  <span class="terminal-prompt-label" id="terminalPromptText">henrique@nexus:~$</span>
+                  <input
+                    type="text"
+                    class="terminal-input"
+                    id="terminalInput"
+                    placeholder="digite 'help'..."
+                    autocomplete="off"
+                    spellcheck="false"
+                    aria-label="Linha de comando do terminal"
+                  >
+                </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         SOBRE MIM (BENTO GRID LAYOUT)
-         ========================================================================== -->
-    <section class="section about" id="about">
+    <!-- ========================================================================
+         ABOUT — SYS.PROFILE MODULE
+         ======================================================================== -->
+    <section class="section" id="about">
       <div class="container">
         <div class="section-header">
-          <span class="badge-tech" data-i18n="about.badge">SYS.PROFILE</span>
+          <span class="section-kicker" data-i18n="about.badge">SYS.PROFILE</span>
           <h2 class="section-title" data-i18n="about.title">Sobre Mim</h2>
-          <p class="section-subtitle" data-i18n="about.subtitle">Engenharia da Computação, Soluções de TI e Desenvolvimento Web</p>
+          <p class="section-sub" data-i18n="about.subtitle">Engenharia da Computação, Soluções de TI e Desenvolvimento Web</p>
         </div>
 
-        <div class="bento-grid">
-          <div class="bento-card bento-main">
+        <div class="about-grid">
+          <div class="bento-card">
             <p data-i18n="about.paragraph1">
               Sou estudante do 6º semestre de Engenharia da Computação na Universidade de Taubaté (UNITAU) e Estagiário de TI no INSS. Apaixonado por tecnologia, aplico a lógica de engenharia e boas práticas de desenvolvimento na solução de desafios computacionais reais.
             </p>
@@ -133,28 +204,28 @@
             </p>
           </div>
 
-          <div class="stats-column">
-            <div class="stat-card-tech">
-              <div class="stat-icon">🎓</div>
+          <div class="stats-col">
+            <div class="stat-node">
+              <div class="stat-icon-box">🎓</div>
               <div>
-                <div class="stat-num" data-i18n="about.stat1Num">06º</div>
-                <div class="stat-txt" data-i18n="about.stat1Label">Semestre Engenharia da Computação (UNITAU)</div>
+                <div class="stat-num" id="statSemestre" data-target="6" data-prefix="" data-suffix="º" data-i18n="about.stat1Num">06º</div>
+                <div class="stat-label" data-i18n="about.stat1Label">Semestre Engenharia da Computação (UNITAU)</div>
               </div>
             </div>
 
-            <div class="stat-card-tech">
-              <div class="stat-icon">⚡</div>
+            <div class="stat-node">
+              <div class="stat-icon-box">⚡</div>
               <div>
-                <div class="stat-num" data-i18n="about.stat2Num">02</div>
-                <div class="stat-txt" data-i18n="about.stat2Label">Projetos Reais em Produção no GitHub</div>
+                <div class="stat-num" id="statProjetos" data-target="2" data-prefix="" data-suffix="" data-i18n="about.stat2Num">02</div>
+                <div class="stat-label" data-i18n="about.stat2Label">Projetos Reais em Produção no GitHub</div>
               </div>
             </div>
 
-            <div class="stat-card-tech">
-              <div class="stat-icon">🏢</div>
+            <div class="stat-node">
+              <div class="stat-icon-box">🏢</div>
               <div>
                 <div class="stat-num" data-i18n="about.stat3Num">INSS</div>
-                <div class="stat-txt" data-i18n="about.stat3Label">Estagiário de TI Ativo</div>
+                <div class="stat-label" data-i18n="about.stat3Label">Estagiário de TI Ativo</div>
               </div>
             </div>
           </div>
@@ -162,66 +233,116 @@
       </div>
     </section>
 
-    <!-- ==========================================================================
-         EXPERIÊNCIA PROFISSIONAL (GIT COMMIT STYLE)
-         ========================================================================== -->
-    <section class="section experience" id="experience">
+    <!-- ========================================================================
+         EXPERIENCE — LOG.EXPERIENCE MODULE
+         ======================================================================== -->
+    <section class="section" id="experience">
       <div class="container">
         <div class="section-header">
-          <span class="badge-tech" data-i18n="experience.badge">LOG.EXPERIENCE</span>
+          <span class="section-kicker" data-i18n="experience.badge">LOG.EXPERIENCE</span>
           <h2 class="section-title" data-i18n="experience.title">Experiência Profissional</h2>
-          <p class="section-subtitle" data-i18n="experience.subtitle">Histórico de atuação no setor público e infraestrutura de TI</p>
+          <p class="section-sub" data-i18n="experience.subtitle">Histórico de atuação no setor público e infraestrutura de TI</p>
         </div>
 
-        <div class="git-timeline">
-          <div class="git-commit-node">
-            <div class="git-node-dot"></div>
-            <div class="git-card">
-              <div class="git-hash" data-i18n="experience.commitHash">commit 8f92a4b [HEAD -> main]</div>
-              <h3 class="exp-role-title" data-i18n="experience.role">Estagiário de TI</h3>
-              <div class="exp-org" data-i18n="experience.company">INSS · Instituto Nacional do Seguro Social</div>
-              <div class="exp-period-badge" data-i18n="experience.period">Agosto de 2025 — Presente</div>
-              <ul class="exp-tasks-list" id="expTasksList">
-                <!-- Preenchido via script.js -->
-              </ul>
+        <div class="experience-wrapper">
+          <!-- Sidebar de metadados -->
+          <div class="exp-sidebar">
+            <div class="exp-meta-card">
+              <div class="exp-meta-title">STATUS</div>
+              <div class="exp-meta-value" data-i18n="experience.statusValue">● ACTIVE</div>
+              <div class="exp-meta-sub" data-i18n="experience.statusSub">Estágio em Andamento</div>
+            </div>
+            <div class="exp-meta-card">
+              <div class="exp-meta-title">ORGANIZAÇÃO</div>
+              <div class="exp-meta-value">INSS</div>
+              <div class="exp-meta-sub" data-i18n="experience.orgSub">Setor Público Federal</div>
+            </div>
+            <div class="exp-meta-card">
+              <div class="exp-meta-title">BRANCH</div>
+              <div class="exp-meta-value" style="color:var(--green)">main</div>
+              <div class="exp-meta-sub">HEAD → experience</div>
+            </div>
+          </div>
+
+          <!-- Timeline principal -->
+          <div class="git-timeline">
+            <div class="git-node">
+              <div class="git-node-indicator" aria-hidden="true"></div>
+              <div class="git-card">
+                <div class="git-hash-row">
+                  <span>commit</span>
+                  <span class="hash" data-i18n="experience.commitHash">8f92a4b</span>
+                  <span class="branch" data-i18n="experience.branchLabel">[HEAD → main]</span>
+                </div>
+
+                <h3 class="exp-role" data-i18n="experience.role">Estagiário de TI</h3>
+                <div class="exp-company" data-i18n="experience.company">INSS · Instituto Nacional do Seguro Social</div>
+                <div class="exp-period" data-i18n="experience.period">Agosto de 2025 — Presente</div>
+
+                <div class="log-stream" id="expLogStream">
+                  <!-- Preenchido via script.js -->
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         FORMAÇÃO ACADÊMICA
-         ========================================================================== -->
-    <section class="section education" id="education">
+    <!-- ========================================================================
+         EDUCATION — ACADEMY.DB MODULE
+         ======================================================================== -->
+    <section class="section" id="education">
       <div class="container">
         <div class="section-header">
-          <span class="badge-tech" data-i18n="education.badge">LOG.ACADEMIC</span>
-          <h2 class="section-title" data-i18n="education.title">Formação & Cursos</h2>
-          <p class="section-subtitle" data-i18n="education.subtitle">Capacitação universitária e certificação técnica prática</p>
+          <span class="section-kicker" data-i18n="education.badge">ACADEMY.DB</span>
+          <h2 class="section-title" data-i18n="education.title">Formação &amp; Cursos</h2>
+          <p class="section-sub" data-i18n="education.subtitle">Capacitação universitária e certificação técnica prática</p>
         </div>
 
         <div class="edu-grid">
-          <div class="edu-card-tech">
-            <div>
-              <span class="edu-header-tag" data-i18n="education.badgeDegree">BACHARELADO</span>
-              <h3 class="edu-degree" data-i18n="education.item1Degree">Engenharia da Computação</h3>
-              <div class="edu-school" data-i18n="education.item1Institution">Universidade de Taubaté (UNITAU)</div>
-              <div class="edu-time" data-i18n="education.item1Period">2024 — 2028 (Em andamento · 6º semestre)</div>
+          <!-- Card 1: Engenharia -->
+          <div class="edu-card">
+            <div class="edu-card-header">
+              <div>
+                <span class="edu-badge" data-i18n="education.badgeDegree">BACHARELADO</span>
+                <h3 class="edu-degree" data-i18n="education.item1Degree" style="margin-top: 0.6rem;">Engenharia da Computação</h3>
+                <div class="edu-school" data-i18n="education.item1Institution">Universidade de Taubaté (UNITAU)</div>
+                <div class="edu-period" data-i18n="education.item1Period">2024 — 2028 (Em andamento · 6º semestre)</div>
+              </div>
+              <!-- Progress Ring 75% -->
+              <div class="progress-ring-wrap" title="75% concluído">
+                <svg class="progress-ring-svg" width="64" height="64" viewBox="0 0 64 64">
+                  <circle class="progress-ring-bg" cx="32" cy="32" r="26"/>
+                  <circle class="progress-ring-fill" cx="32" cy="32" r="26" data-progress="75" id="ring1"/>
+                </svg>
+                <div class="progress-ring-label" id="ring1Label">0%</div>
+              </div>
             </div>
-            <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="education.item1Desc">
+            <p class="edu-desc" data-i18n="education.item1Desc">
               Grade englobando arquitetura de computadores, sistemas operacionais, estrutura de dados, redes e engenharia de software.
             </p>
           </div>
 
-          <div class="edu-card-tech">
-            <div>
-              <span class="edu-header-tag" data-i18n="education.badgeTechnical">TÉCNICO INTEGRADO</span>
-              <h3 class="edu-degree" data-i18n="education.item2Degree">Técnico Integrado em Programação</h3>
-              <div class="edu-school" data-i18n="education.item2Institution">OneBitCode</div>
-              <div class="edu-time" data-i18n="education.item2Period">Janeiro de 2024 — Dezembro de 2025</div>
+          <!-- Card 2: OneBitCode -->
+          <div class="edu-card">
+            <div class="edu-card-header">
+              <div>
+                <span class="edu-badge" data-i18n="education.badgeTechnical">TÉCNICO INTEGRADO</span>
+                <h3 class="edu-degree" data-i18n="education.item2Degree" style="margin-top: 0.6rem;">Técnico Integrado em Programação</h3>
+                <div class="edu-school" data-i18n="education.item2Institution">OneBitCode</div>
+                <div class="edu-period" data-i18n="education.item2Period">Janeiro de 2024 — Dezembro de 2025</div>
+              </div>
+              <!-- Progress Ring 90% -->
+              <div class="progress-ring-wrap" title="90% concluído">
+                <svg class="progress-ring-svg" width="64" height="64" viewBox="0 0 64 64">
+                  <circle class="progress-ring-bg" cx="32" cy="32" r="26"/>
+                  <circle class="progress-ring-fill" cx="32" cy="32" r="26" data-progress="90" id="ring2"/>
+                </svg>
+                <div class="progress-ring-label" id="ring2Label">0%</div>
+              </div>
             </div>
-            <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="education.item2Desc">
+            <p class="edu-desc" data-i18n="education.item2Desc">
               Formação intensiva em Desenvolvimento Web (HTML5, CSS3, JavaScript ES6+), lógica de programação, Python e Git.
             </p>
           </div>
@@ -229,157 +350,183 @@
       </div>
     </section>
 
-    <!-- ==========================================================================
-         PROJETOS RELEVANTES (IDE WINDOW DECK)
-         ========================================================================== -->
-    <section class="section projects" id="projects">
+    <!-- ========================================================================
+         PROJECTS — DEPLOY.LIST MODULE (IDE CARDS COM TILT 3D)
+         ======================================================================== -->
+    <section class="section" id="projects">
       <div class="container">
         <div class="section-header">
-          <span class="badge-tech" data-i18n="projects.badge">PORTFOLIO.DEPLOY</span>
+          <span class="section-kicker" data-i18n="projects.badge">PORTFOLIO.DEPLOY</span>
           <h2 class="section-title" data-i18n="projects.title">Projetos em Destaque</h2>
-          <p class="section-subtitle" data-i18n="projects.subtitle">Aplicações reais desenvolvidas para clientes com foco em performance</p>
+          <p class="section-sub" data-i18n="projects.subtitle">Aplicações reais desenvolvidas para clientes com foco em performance</p>
         </div>
 
         <div class="projects-deck">
-          <!-- Projeto 1: Portal Ferreira Imóveis -->
-          <div class="ide-card">
-            <div>
-              <div class="ide-header">
-                <div class="terminal-dots">
-                  <span class="dot dot-red"></span>
-                  <span class="dot dot-yellow"></span>
-                  <span class="dot dot-green"></span>
-                </div>
-                <div class="ide-tab">📄 ferreira_imoveis.sys</div>
+
+          <!-- Projeto 1: Ferreira Imóveis -->
+          <div class="ide-card" id="ideCard1">
+            <div class="ide-titlebar">
+              <div class="terminal-dots" aria-hidden="true">
+                <span class="dot dot-r"></span>
+                <span class="dot dot-y"></span>
+                <span class="dot dot-g"></span>
               </div>
-              <div class="ide-content">
-                <div class="project-category" data-i18n="projects.proj1Tag">SYSTEM // SEO LOCAL</div>
-                <h3 class="project-name" data-i18n="projects.proj1Title">Portal Ferreira Imóveis</h3>
-                <p class="project-details" data-i18n="projects.proj1Desc">
-                  Portal institucional e sistema de gestão imobiliária para a Ferreira Imóveis (Cruzeiro e Ubatuba/SP), desenvolvido com Google Antigravity e estratégias de SEO local.
-                </p>
-                <div class="tech-stack-row">
-                  <span class="tech-chip">Google Antigravity</span>
-                  <span class="tech-chip">SEO Local</span>
-                  <span class="tech-chip">Web Dev</span>
-                  <span class="tech-chip">TypeScript / JS</span>
-                </div>
+              <div class="ide-tab">📄 ferreira_imoveis.sys</div>
+            </div>
+            <div class="ide-statusbar">
+              <span class="sb-lang">TypeScript</span>
+              <span class="sb-lines">~480 lines</span>
+              <span class="sb-deploy">✓ DEPLOYED</span>
+            </div>
+            <div class="ide-body">
+              <div class="project-tag" data-i18n="projects.proj1Tag">SYSTEM // SEO LOCAL</div>
+              <h3 class="project-name" data-i18n="projects.proj1Title">Portal Ferreira Imóveis</h3>
+              <p class="project-desc" data-i18n="projects.proj1Desc">
+                Portal institucional e sistema de gestão imobiliária para a Ferreira Imóveis (Cruzeiro e Ubatuba/SP), desenvolvido com Google Antigravity e estratégias de SEO local.
+              </p>
+              <div class="tech-stack">
+                <span class="tech-pill">Google Antigravity</span>
+                <span class="tech-pill">SEO Local</span>
+                <span class="tech-pill">TypeScript</span>
+                <span class="tech-pill">Web Dev</span>
               </div>
             </div>
             <div class="ide-footer">
-              <a href="https://github.com/henriqueDias57/ferreira-imoveis" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%;" data-i18n="projects.proj1RepoBtn">
-                Repositório GitHub ↗
+              <a href="https://github.com/henriqueDias57/ferreira-imoveis" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" data-i18n="projects.proj1RepoBtn">
+                <span>🐙</span> Repositório GitHub ↗
               </a>
             </div>
           </div>
 
-          <!-- Projeto 2: Landing Page Advocacia Mariana -->
-          <div class="ide-card">
-            <div>
-              <div class="ide-header">
-                <div class="terminal-dots">
-                  <span class="dot dot-red"></span>
-                  <span class="dot dot-yellow"></span>
-                  <span class="dot dot-green"></span>
-                </div>
-                <div class="ide-tab">📄 advocacia_mariana.law</div>
+          <!-- Projeto 2: Advocacia Mariana -->
+          <div class="ide-card" id="ideCard2">
+            <div class="ide-titlebar">
+              <div class="terminal-dots" aria-hidden="true">
+                <span class="dot dot-r"></span>
+                <span class="dot dot-y"></span>
+                <span class="dot dot-g"></span>
               </div>
-              <div class="ide-content">
-                <div class="project-category" data-i18n="projects.proj2Tag">WEB // LANDING PAGE</div>
-                <h3 class="project-name" data-i18n="projects.proj2Title">Landing Page Advocacia Mariana</h3>
-                <p class="project-details" data-i18n="projects.proj2Desc">
-                  Landing page profissional desenvolvida para escritório de advocacia, focada em posicionamento de autoridade, apresentação de serviços jurídicos e alta captação.
-                </p>
-                <div class="tech-stack-row">
-                  <span class="tech-chip">HTML5</span>
-                  <span class="tech-chip">CSS3</span>
-                  <span class="tech-chip">JavaScript</span>
-                  <span class="tech-chip">UX/UI Design</span>
-                </div>
+              <div class="ide-tab">📄 advocacia_mariana.law</div>
+            </div>
+            <div class="ide-statusbar">
+              <span class="sb-lang">JavaScript</span>
+              <span class="sb-lines">~320 lines</span>
+              <span class="sb-deploy">✓ DEPLOYED</span>
+            </div>
+            <div class="ide-body">
+              <div class="project-tag" data-i18n="projects.proj2Tag">WEB // LANDING PAGE</div>
+              <h3 class="project-name" data-i18n="projects.proj2Title">Landing Page Advocacia Mariana</h3>
+              <p class="project-desc" data-i18n="projects.proj2Desc">
+                Landing page profissional desenvolvida para escritório de advocacia, focada em posicionamento de autoridade, apresentação de serviços jurídicos e alta captação.
+              </p>
+              <div class="tech-stack">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS3</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">UX/UI Design</span>
               </div>
             </div>
             <div class="ide-footer">
-              <a href="https://github.com/henriqueDias57/site---Advogada-Mariana-" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%;" data-i18n="projects.proj2RepoBtn">
-                Repositório GitHub ↗
+              <a href="https://github.com/henriqueDias57/site---Advogada-Mariana-" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" data-i18n="projects.proj2RepoBtn">
+                <span>🐙</span> Repositório GitHub ↗
               </a>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         HABILIDADES TÉCNICAS (DASHBOARD TÉCNICO)
-         ========================================================================== -->
-    <section class="section skills" id="skills">
+    <!-- ========================================================================
+         SKILLS — STACK.MATRIX MODULE (HEATMAP)
+         ======================================================================== -->
+    <section class="section" id="skills">
       <div class="container">
         <div class="section-header">
-          <span class="badge-tech" data-i18n="skills.badge">STACK.DASHBOARD</span>
+          <span class="section-kicker" data-i18n="skills.badge">STACK.MATRIX</span>
           <h2 class="section-title" data-i18n="skills.title">Habilidades Técnicas</h2>
-          <p class="section-subtitle" data-i18n="skills.subtitle">Matriz de tecnologias, ferramentas e domínios de engenharia</p>
+          <p class="section-sub" data-i18n="skills.subtitle">Matriz de tecnologias, ferramentas e domínios de engenharia</p>
         </div>
 
-        <div class="skills-dashboard">
-          <div class="skill-panel">
-            <h3 class="panel-title" data-i18n="skills.cat1Title">Desenvolvimento Web & Software</h3>
-            <div class="tags-cloud">
-              <span class="cyber-pill">🐍 Python</span>
-              <span class="cyber-pill">⚡ JavaScript (ES6+)</span>
-              <span class="cyber-pill">🌐 HTML5</span>
-              <span class="cyber-pill">🎨 CSS3</span>
-              <span class="cyber-pill" data-i18n="skills.webDev">💻 Desenvolvimento Web</span>
+        <div class="skills-matrix">
+
+          <!-- Categoria 1: Desenvolvimento -->
+          <div class="skill-category">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">⚡</div>
+              <div class="skill-cat-name" data-i18n="skills.cat1Title">Desenvolvimento Web &amp; Software</div>
+            </div>
+            <div class="skills-heatmap">
+              <span class="heat-cell" data-level="3" data-tooltip="Proficiente">🐍 Python</span>
+              <span class="heat-cell" data-level="3" data-tooltip="Proficiente">⚡ JavaScript ES6+</span>
+              <span class="heat-cell" data-level="3" data-tooltip="Proficiente">🌐 HTML5</span>
+              <span class="heat-cell" data-level="3" data-tooltip="Proficiente">🎨 CSS3</span>
+              <span class="heat-cell" data-level="2" data-tooltip="Intermediário" data-i18n-tooltip="skills.webDev">💻 Web Dev</span>
             </div>
           </div>
 
-          <div class="skill-panel">
-            <h3 class="panel-title" data-i18n="skills.cat2Title">Sistemas & Infraestrutura</h3>
-            <div class="tags-cloud">
-              <span class="cyber-pill" data-i18n="skills.techSupport">🛠️ Suporte Técnico</span>
-              <span class="cyber-pill" data-i18n="skills.hardwareEng">🔌 Engenharia de Hardware</span>
-              <span class="cyber-pill" data-i18n="skills.pcMaintenance">🖥️ Manutenção de Computadores</span>
-              <span class="cyber-pill" data-i18n="skills.networkDiag">📡 Diagnóstico de Redes</span>
+          <!-- Categoria 2: Infraestrutura -->
+          <div class="skill-category">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">🖥️</div>
+              <div class="skill-cat-name" data-i18n="skills.cat2Title">Sistemas &amp; Infraestrutura</div>
+            </div>
+            <div class="skills-heatmap">
+              <span class="heat-cell" data-level="3" data-tooltip="Proficiente" data-i18n="skills.techSupport">🛠️ Suporte Técnico</span>
+              <span class="heat-cell" data-level="2" data-tooltip="Intermediário" data-i18n="skills.hardwareEng">🔌 Engenharia de Hardware</span>
+              <span class="heat-cell" data-level="3" data-tooltip="Proficiente" data-i18n="skills.pcMaintenance">🖥️ Manutenção de PCs</span>
+              <span class="heat-cell" data-level="2" data-tooltip="Intermediário" data-i18n="skills.networkDiag">📡 Diagnóstico de Redes</span>
             </div>
           </div>
 
-          <div class="skill-panel">
-            <h3 class="panel-title" data-i18n="skills.cat3Title">Engenharia & Ferramentas</h3>
-            <div class="tags-cloud">
-              <span class="cyber-pill">🐙 Git / GitHub</span>
-              <span class="cyber-pill">🚀 Google Antigravity</span>
-              <span class="cyber-pill">🎯 SEO Local</span>
-              <span class="cyber-pill" data-i18n="skills.progLogic">📐 Lógica de Programação</span>
+          <!-- Categoria 3: Ferramentas -->
+          <div class="skill-category">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">🛠️</div>
+              <div class="skill-cat-name" data-i18n="skills.cat3Title">Engenharia &amp; Ferramentas</div>
+            </div>
+            <div class="skills-heatmap">
+              <span class="heat-cell" data-level="3" data-tooltip="Proficiente">🐙 Git / GitHub</span>
+              <span class="heat-cell" data-level="2" data-tooltip="Intermediário">🚀 Google Antigravity</span>
+              <span class="heat-cell" data-level="2" data-tooltip="Intermediário">🎯 SEO Local</span>
+              <span class="heat-cell" data-level="3" data-tooltip="Proficiente" data-i18n="skills.progLogic">📐 Lógica de Programação</span>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         EXTRACURRICULAR / VOLUNTARIADO
-         ========================================================================== -->
-    <section class="section extracurricular" id="extracurricular">
+    <!-- ========================================================================
+         EXTRACURRICULAR — COMMUNITY.NET MODULE
+         ======================================================================== -->
+    <section class="section" id="extracurricular">
       <div class="container">
         <div class="section-header">
-          <span class="badge-tech" data-i18n="extracurricular.badge">COMMUNITY.IMPACT</span>
-          <h2 class="section-title" data-i18n="extracurricular.title">Extracurricular & Voluntariado</h2>
-          <p class="section-subtitle" data-i18n="extracurricular.subtitle">Participação em feiras científicas e trabalho voluntário</p>
+          <span class="section-kicker" data-i18n="extracurricular.badge">COMMUNITY.NET</span>
+          <h2 class="section-title" data-i18n="extracurricular.title">Extracurricular &amp; Voluntariado</h2>
+          <p class="section-sub" data-i18n="extracurricular.subtitle">Participação em feiras científicas e trabalho voluntário</p>
         </div>
 
-        <div class="extra-flex">
-          <div class="extra-module">
-            <div class="module-icon">🔬</div>
-            <h3 class="module-title" data-i18n="extracurricular.item1Title">Science Day (São José dos Campos)</h3>
-            <div class="module-role" data-i18n="extracurricular.item1Role">Representante UNITAU · Desenvolvedor de Jogo</div>
-            <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="extracurricular.item1Desc">
+        <div class="extra-grid">
+          <div class="extra-card">
+            <div class="extra-icon">🔬</div>
+            <div>
+              <h3 class="extra-title" data-i18n="extracurricular.item1Title">Science Day (São José dos Campos)</h3>
+              <div class="extra-role" data-i18n="extracurricular.item1Role">Representante UNITAU · Desenvolvedor de Jogo</div>
+            </div>
+            <p class="extra-desc" data-i18n="extracurricular.item1Desc">
               Apresentação de jogo interativo desenvolvido pela equipe de alunos no Science Day em São José dos Campos, representando a UNITAU com foco em lógica de programação.
             </p>
           </div>
 
-          <div class="extra-module">
-            <div class="module-icon">🤝</div>
-            <h3 class="module-title" data-i18n="extracurricular.item2Title">Ações Sociais & Trabalho Voluntário</h3>
-            <div class="module-role" data-i18n="extracurricular.item2Role">Voluntário Social em Cruzeiro/SP</div>
-            <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="extracurricular.item2Desc">
+          <div class="extra-card">
+            <div class="extra-icon">🤝</div>
+            <div>
+              <h3 class="extra-title" data-i18n="extracurricular.item2Title">Ações Sociais &amp; Trabalho Voluntário</h3>
+              <div class="extra-role" data-i18n="extracurricular.item2Role">Voluntário Social em Cruzeiro/SP</div>
+            </div>
+            <p class="extra-desc" data-i18n="extracurricular.item2Desc">
               Engajamento semanal em ações comunitárias em Cruzeiro/SP para apoio a pessoas em situação de vulnerabilidade com distribuição de refeições e agasalhos.
             </p>
           </div>
@@ -387,49 +534,89 @@
       </div>
     </section>
 
-    <!-- ==========================================================================
-         CONTATO & FOOTER
-         ========================================================================== -->
-    <section class="section contact" id="contact">
-      <div class="container contact-block">
+    <!-- ========================================================================
+         CONTACT — CONNECT.SH MODULE (TCP HANDSHAKE)
+         ======================================================================== -->
+    <section class="section" id="contact">
+      <div class="container">
         <div class="section-header">
-          <span class="badge-tech" data-i18n="contact.badge">SYS.CONNECT</span>
+          <span class="section-kicker" data-i18n="contact.badge">SYS.CONNECT</span>
           <h2 class="section-title" data-i18n="contact.title">Conectar ao Perfil</h2>
-          <p class="section-subtitle" data-i18n="contact.subtitle">Disponível para oportunidades de estágio e nível júnior</p>
-          <p style="color: var(--text-muted); margin-top: 1rem; line-height: 1.7;" data-i18n="contact.text">
-            Se você busca um estagiário ou desenvolvedor júnior com sólida base em engenharia, facilidade de aprendizado e paixão por sistemas, entre em contato.
-          </p>
         </div>
 
-        <div class="contact-grid">
-          <a href="https://github.com/henriqueDias57" target="_blank" rel="noopener noreferrer" class="contact-tile">
-            <div class="tile-icon">🐙</div>
-            <div>
-              <div class="tile-title" data-i18n="contact.githubCardTitle">GitHub</div>
-              <div class="tile-sub" data-i18n="contact.githubCardSub">@henriqueDias57 · Repositórios Públicos</div>
-            </div>
-          </a>
+        <div class="contact-wrap">
+          <div class="contact-text">
+            <p data-i18n="contact.subtitle">Disponível para oportunidades de estágio e nível júnior.</p>
+            <p data-i18n="contact.text">
+              Se você busca um estagiário ou desenvolvedor júnior com sólida base em engenharia, facilidade de aprendizado e paixão por sistemas, entre em contato.
+            </p>
 
-          <a href="https://www.linkedin.com/in/henrique-dias-5411a8355/" target="_blank" rel="noopener noreferrer" class="contact-tile">
-            <div class="tile-icon">💼</div>
-            <div>
-              <div class="tile-title" data-i18n="contact.linkedinCardTitle">LinkedIn</div>
-              <div class="tile-sub" data-i18n="contact.linkedinCardSub">in/henrique-dias-5411a8355 · Perfil Profissional</div>
+            <div class="contact-links">
+              <a href="https://github.com/henriqueDias57" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+                <div class="contact-link-icon">🐙</div>
+                <div class="contact-link-info">
+                  <div class="contact-link-title" data-i18n="contact.githubCardTitle">GitHub</div>
+                  <div class="contact-link-ssh">ssh git@github.com:henriqueDias57</div>
+                </div>
+                <div class="contact-link-arrow">→</div>
+              </a>
+
+              <a href="https://www.linkedin.com/in/henrique-dias-5411a8355/" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+                <div class="contact-link-icon">💼</div>
+                <div class="contact-link-info">
+                  <div class="contact-link-title" data-i18n="contact.linkedinCardTitle">LinkedIn</div>
+                  <div class="contact-link-ssh">connect henrique@linkedin.com</div>
+                </div>
+                <div class="contact-link-arrow">→</div>
+              </a>
             </div>
-          </a>
+          </div>
+
+          <!-- Handshake Panel -->
+          <div class="handshake-panel" id="handshakePanel">
+            <div class="handshake-title" data-i18n="contact.handshakeTitle">TCP Handshake · Iniciando Conexão</div>
+            <div class="hs-step" id="hs1">
+              <span class="hs-icon">→</span>
+              <span class="hs-label" data-i18n="contact.hs1Label">SYN: Iniciando conexão...</span>
+              <span class="hs-status wait" data-i18n="contact.hs1Status">WAIT</span>
+            </div>
+            <div class="hs-step" id="hs2">
+              <span class="hs-icon">←</span>
+              <span class="hs-label" data-i18n="contact.hs2Label">SYN-ACK: Recrutador recebeu</span>
+              <span class="hs-status ok" data-i18n="contact.hs2Status">OK</span>
+            </div>
+            <div class="hs-step" id="hs3">
+              <span class="hs-icon hs-ok">✓</span>
+              <span class="hs-label" data-i18n="contact.hs3Label">ACK: Conexão estabelecida!</span>
+              <span class="hs-status done" data-i18n="contact.hs3Status">CONNECTED</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
   <footer class="footer">
     <div class="container">
-      <p data-i18n="contact.footerCopyright">© 2026 Henrique Dias // Computer Engineering & IT. Todos os direitos reservados.</p>
+      <div class="footer-inner">
+        <p class="footer-copy" data-i18n="contact.footerCopyright">
+          © 2026 Henrique Dias // Computer Engineering &amp; IT. Todos os direitos reservados.
+        </p>
+        <div class="footer-sys">
+          <span class="footer-sys-dot" aria-hidden="true"></span>
+          <span>NEXUS OS v2.6 · ONLINE</span>
+        </div>
+      </div>
     </div>
   </footer>
 
   <!-- Scripts -->
   <script src="js/translations.js"></script>
+  <script src="js/boot.js"></script>
+  <script src="js/nexus3d.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>

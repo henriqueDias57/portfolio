@@ -55,7 +55,10 @@ const translations = {
       role: "Estagiário de TI",
       period: "Agosto de 2025 — Presente",
       location: "São Paulo, Brasil",
-      commitHash: "commit 8f92a4b [HEAD -> main]",
+      statusValue: "● ATIVO",
+      statusSub: "Estágio em Andamento",
+      orgSub: "Setor Público Federal",
+      branchLabel: "[HEAD -> main]",
       tasks: [
         "Suporte técnico direto aos usuários internos com diagnóstico rápido de sistemas corporativos.",
         "Montagem, configuração, manutenção preventiva e corretiva de estações de trabalho e ativos de rede.",
@@ -64,7 +67,7 @@ const translations = {
       ]
     },
     education: {
-      badge: "LOG.ACADEMIC",
+      badge: "ACADEMY.DB",
       title: "Formação & Cursos",
       subtitle: "Capacitação universitária e certificação técnica prática",
       badgeDegree: "BACHARELADO",
@@ -92,7 +95,7 @@ const translations = {
       proj2RepoBtn: "Repositório GitHub ↗"
     },
     skills: {
-      badge: "STACK.DASHBOARD",
+      badge: "STACK.MATRIX",
       title: "Habilidades Técnicas",
       subtitle: "Matriz de tecnologias, ferramentas e domínios de engenharia",
       cat1Title: "Desenvolvimento Web & Software",
@@ -106,7 +109,7 @@ const translations = {
       progLogic: "📐 Lógica de Programação"
     },
     extracurricular: {
-      badge: "COMMUNITY.IMPACT",
+      badge: "COMMUNITY.NET",
       title: "Extracurricular & Voluntariado",
       subtitle: "Participação em feiras científicas e trabalho voluntário",
       item1Title: "Science Day (São José dos Campos)",
@@ -125,6 +128,13 @@ const translations = {
       githubCardSub: "@henriqueDias57 · Repositórios Públicos",
       linkedinCardTitle: "LinkedIn",
       linkedinCardSub: "in/henrique-dias-5411a8355 · Perfil Profissional",
+      handshakeTitle: "TCP Handshake · Iniciando Conexão",
+      hs1Label: "SYN: Iniciando conexão...",
+      hs1Status: "WAIT",
+      hs2Label: "SYN-ACK: Recrutador recebeu",
+      hs2Status: "OK",
+      hs3Label: "ACK: Conexão estabelecida!",
+      hs3Status: "CONNECTED",
       footerCopyright: "© 2026 Henrique Dias // Computer Engineering & IT. Todos os direitos reservados."
     }
   },
@@ -184,7 +194,10 @@ const translations = {
       role: "IT Intern",
       period: "August 2025 — Present",
       location: "São Paulo, Brazil",
-      commitHash: "commit 8f92a4b [HEAD -> main]",
+      statusValue: "● ACTIVE",
+      statusSub: "Internship in Progress",
+      orgSub: "Federal Public Sector",
+      branchLabel: "[HEAD -> main]",
       tasks: [
         "Direct technical support for internal users with fast corporate system diagnostics.",
         "Assembly, setup, preventive and corrective maintenance of workstations and network assets.",
@@ -193,7 +206,7 @@ const translations = {
       ]
     },
     education: {
-      badge: "LOG.ACADEMIC",
+      badge: "ACADEMY.DB",
       title: "Education & Courses",
       subtitle: "University education combined with hands-on technical certification",
       badgeDegree: "BACHELOR DEGREE",
@@ -221,7 +234,7 @@ const translations = {
       proj2RepoBtn: "GitHub Repository ↗"
     },
     skills: {
-      badge: "STACK.DASHBOARD",
+      badge: "STACK.MATRIX",
       title: "Technical Skills",
       subtitle: "Matrix of technologies, tools, and engineering domains",
       cat1Title: "Web & Software Development",
@@ -235,7 +248,7 @@ const translations = {
       progLogic: "📐 Programming Logic"
     },
     extracurricular: {
-      badge: "COMMUNITY.IMPACT",
+      badge: "COMMUNITY.NET",
       title: "Extracurricular & Volunteer",
       subtitle: "Science fair representation and community service",
       item1Title: "Science Day (São José dos Campos)",
@@ -254,6 +267,13 @@ const translations = {
       githubCardSub: "@henriqueDias57 · Public Repositories",
       linkedinCardTitle: "LinkedIn",
       linkedinCardSub: "in/henrique-dias-5411a8355 · Professional Profile",
+      handshakeTitle: "TCP Handshake · Initiating Connection",
+      hs1Label: "SYN: Initiating connection...",
+      hs1Status: "WAIT",
+      hs2Label: "SYN-ACK: Recruiter received",
+      hs2Status: "OK",
+      hs3Label: "ACK: Connection established!",
+      hs3Status: "CONNECTED",
       footerCopyright: "© 2026 Henrique Dias // Computer Engineering & IT. All rights reserved."
     }
   }
