@@ -54,6 +54,8 @@ const translations = {
       badge: "Conhecimento",
       title: "Formação Acadêmica & Cursos",
       subtitle: "Base teórica sólida combinada com qualificação técnica",
+      badgeDegree: "Graduação / Bacharelado",
+      badgeTechnical: "Curso Técnico Integrado",
       item1Degree: "Bacharelado em Engenharia da Computação",
       item1Institution: "Universidade de Taubaté (UNITAU)",
       item1Period: "2024 — 2028 (Em andamento · 6º semestre)",
@@ -82,7 +84,13 @@ const translations = {
       subtitle: "Tecnologias e ferramentas dominadas",
       cat1Title: "Desenvolvimento Web & Software",
       cat2Title: "Sistemas & Infraestrutura",
-      cat3Title: "Engenharia & Ferramentas"
+      cat3Title: "Engenharia & Ferramentas",
+      webDev: "💻 Desenvolvimento Web",
+      techSupport: "🛠️ Suporte Técnico",
+      hardwareEng: "🔌 Engenharia de Hardware",
+      pcMaintenance: "🖥️ Manutenção de Computadores",
+      networkDiag: "📡 Diagnóstico de Redes",
+      progLogic: "📐 Lógica de Programação"
     },
     extracurricular: {
       badge: "Impacto Social & Acadêmico",
@@ -162,6 +170,8 @@ const translations = {
       badge: "Knowledge",
       title: "Education & Certifications",
       subtitle: "Strong academic foundation combined with technical training",
+      badgeDegree: "Bachelor's Degree",
+      badgeTechnical: "Integrated Technical Program",
       item1Degree: "Bachelor of Science in Computer Engineering",
       item1Institution: "University of Taubaté (UNITAU)",
       item1Period: "2024 — 2028 (In Progress · 6th semester)",
@@ -190,7 +200,13 @@ const translations = {
       subtitle: "Technologies and tools I work with",
       cat1Title: "Web & Software Development",
       cat2Title: "Systems & Infrastructure",
-      cat3Title: "Engineering & Tools"
+      cat3Title: "Engineering & Tools",
+      webDev: "💻 Web Development",
+      techSupport: "🛠️ Technical Support",
+      hardwareEng: "🔌 Hardware Engineering",
+      pcMaintenance: "🖥️ Computer Maintenance",
+      networkDiag: "📡 Network Diagnostics",
+      progLogic: "📐 Programming Logic"
     },
     extracurricular: {
       badge: "Social & Academic Impact",
