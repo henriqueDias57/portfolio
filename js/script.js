@@ -106,26 +106,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         switch (cmd) {
           case 'help':
-            respLine.style.color = '#a7f3d0';
+            respLine.classList.add('terminal-output-line', 'success');
             respLine.textContent = tData.cmdHelp;
             break;
           case 'about':
-            respLine.style.color = '#fde047';
+            respLine.classList.add('terminal-output-line', 'warning');
             respLine.textContent = tData.cmdAbout;
             break;
           case 'skills':
-            respLine.style.color = '#38bdf8';
+            respLine.classList.add('terminal-output-line', 'info');
             respLine.textContent = tData.cmdSkills;
             break;
           case 'projects':
+            respLine.classList.add('terminal-output-line');
             respLine.style.color = '#c084fc';
             respLine.textContent = tData.cmdProjects;
             break;
           case 'experience':
-            respLine.style.color = '#34d399';
+            respLine.classList.add('terminal-output-line', 'success');
             respLine.textContent = tData.cmdExperience;
             break;
           case 'contact':
+            respLine.classList.add('terminal-output-line');
             respLine.style.color = '#f472b6';
             respLine.textContent = tData.cmdContact;
             break;
@@ -133,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
             terminalOutput.innerHTML = '';
             return;
           default:
-            respLine.style.color = '#f87171';
+            respLine.classList.add('terminal-output-line', 'error');
             respLine.textContent = tData.cmdNotFound;
         }
 

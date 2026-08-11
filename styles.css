@@ -985,6 +985,137 @@ ul {
 }
 
 /* ==========================================================================
+   POLIMENTO FINAL — Terminal, Scrollbar & Acessibilidade
+   ========================================================================== */
+
+/* Saída do terminal com formatação pré-formatada */
+.terminal-output-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.6;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* Cursor piscante no campo de input do terminal */
+.terminal-input::placeholder {
+  color: rgba(100, 116, 139, 0.6);
+}
+
+/* Mensagem de boas-vindas do terminal */
+.terminal-welcome {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Cursor animado no terminal */
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1rem;
+  background: var(--accent-cyan);
+  animation: blinkCursor 1.1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+  border-radius: 1px;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Scrollbar customizada — tema cibernético */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
+}
+
+/* Scrollbar interna do terminal */
+.terminal-body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.3);
+  border-radius: 2px;
+}
+
+/* Efeito de glow pulsante no logo-tag */
+.logo-tag {
+  animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+  0%, 100% { box-shadow: 0 0 8px rgba(6, 182, 212, 0.3); }
+  50% { box-shadow: 0 0 18px rgba(6, 182, 212, 0.6); }
+}
+
+/* Linha separadora ornamental nas seções */
+.section:not(:last-child)::after {
+  content: '';
+  display: block;
+  width: 40%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+  margin: 0 auto;
+  padding-top: 3rem;
+}
+
+/* Focus acessível nos botões */
+.btn:focus-visible,
+.lang-btn:focus-visible,
+.nav-link:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Estilo da mensagem de resposta no terminal */
+.terminal-output-line.success { color: #34d399; }
+.terminal-output-line.info    { color: #38bdf8; }
+.terminal-output-line.warning { color: #fbbf24; }
+.terminal-output-line.error   { color: #f87171; }
+
+/* Animação de entrada suave para seções (quando GSAP não carrega) */
+.section {
+  animation: sectionFadeIn 0.6s ease-out both;
+}
+
+@keyframes sectionFadeIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Badge de status com animação de glow */
+.badge-status {
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.1);
+}
+
+/* Desabilita animações pesadas se preferência de motion reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .logo-tag { animation: none; }
+  .status-dot { animation: none; }
+  .section { animation: none; }
+  #bgCanvas { display: none; }
+  .terminal-cursor { animation: none; }
+}
+
+
+/* ==========================================================================
    RESPONSIVIDADE (MOBILE-FIRST)
    ========================================================================== */
 @media (max-width: 992px) {
