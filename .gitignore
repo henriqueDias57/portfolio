@@ -1,0 +1,11 @@
+# macOS / Windows OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs & Temp files
+*.log
+.cache
+node_modules/
+dist/
+build/
