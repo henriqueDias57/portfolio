@@ -292,6 +292,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================================================
   const CIRCUNFERENCE = 2 * Math.PI * 26; // r=26
 
+  function initRings() {
+    document.querySelectorAll('.progress-ring-fill').forEach(ring => {
+      const pct = parseInt(ring.getAttribute('data-progress') || '0', 10);
+      const offset = CIRCUNFERENCE * (1 - pct / 100);
+      ring.style.strokeDasharray = CIRCUNFERENCE;
+      ring.style.strokeDashoffset = offset;
+      const label = document.getElementById(ring.id + 'Label');
+      if (label) label.textContent = pct + '%';
+    });
+  }
+
   function animateRings() {
     document.querySelectorAll('.progress-ring-fill').forEach(ring => {
       const pct   = parseInt(ring.getAttribute('data-progress') || '0', 10);
@@ -299,13 +310,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const offset = CIRCUNFERENCE * (1 - pct / 100);
 
       ring.style.strokeDasharray  = CIRCUNFERENCE;
-      ring.style.strokeDashoffset = CIRCUNFERENCE; // começa vazio
+      ring.style.strokeDashoffset = CIRCUNFERENCE;
 
       requestAnimationFrame(() => {
         ring.style.strokeDashoffset = offset;
       });
 
-      // Anima o número
       if (label && !prefersReducedMotion) {
         let current = 0;
         const step = () => {
@@ -313,14 +323,16 @@ document.addEventListener('DOMContentLoaded', () => {
           label.textContent = current + '%';
           if (current < pct) requestAnimationFrame(step);
         };
-        setTimeout(step, 200);
+        setTimeout(step, 100);
       } else if (label) {
         label.textContent = pct + '%';
       }
     });
   }
 
-  // Dispara rings quando Education entrar na viewport
+  // Pre-seta aneis imediatamente
+  initRings();
+
   const eduSection = document.getElementById('education');
   if (eduSection) {
     const ringObs = new IntersectionObserver(entries => {
@@ -328,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animateRings();
         ringObs.disconnect();
       }
-    }, { threshold: 0.3 });
+    }, { threshold: 0.2 });
     ringObs.observe(eduSection);
   }
 

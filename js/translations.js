@@ -258,7 +258,7 @@ const translations = {
       item1Desc: "Showcased an interactive game developed by student team at Science Day in São José dos Campos, representing UNITAU with focus on coding logic.",
       item2Title: "Institutional Social Action (INSS)",
       item2Role: "IT Intern · Homeless Assistance Outreach",
-      item2Desc: "Took part, through my internship at INSS (Brazil's National Social Security Institute), in an institutional outreach action providing assistance to people experiencing homelessness, offering guidance on social security and welfare benefits to individuals in situations of social vulnerability."
+      item2Desc: "Took part, through my internship at INSS (Brazil's National Social Security Institute), in a PopRuaJud institutional outreach action providing assistance to people experiencing homelessness. I helped set up the computers used on-site, downloaded and configured the required systems, and supported the on-location service to the homeless population."
     },
     contact: {
       badge: "SYS.CONNECT",
