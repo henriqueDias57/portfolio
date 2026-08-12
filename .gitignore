@@ -1,11 +1,19 @@
-# macOS / Windows OS files
+# OS files
 .DS_Store
 Thumbs.db
 desktop.ini
 
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# Vercel & Build artifacts
+.vercel
+dist/
+build/
+node_modules/
+
 # Logs & Temp files
 *.log
 .cache
-node_modules/
-dist/
-build/
