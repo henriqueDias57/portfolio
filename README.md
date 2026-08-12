@@ -4,6 +4,8 @@ Repositorio oficial do site pessoal e portfolio de Henrique Dias, estudante de E
 
 O site foi concebido como um "sistema operacional pessoal" — conceito NEXUS OS: ao acessar o portfolio, o visitante interage com uma interface tecnica imersiva, completa com sequencia de boot, canvas 3D de particulas, HUD em tempo real e terminal interativo.
 
+Site publicado: [portfolio-rho-three-45.vercel.app](https://portfolio-rho-three-45.vercel.app)
+
 ---
 
 ## Funcionalidades
