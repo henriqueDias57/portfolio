@@ -118,7 +118,7 @@ const translations = {
       item1Desc: "Apresentação de jogo interativo desenvolvido pela equipe de alunos no Science Day em São José dos Campos, representando a UNITAU com foco em lógica de programação.",
       item2Title: "Ação Social Institucional (INSS)",
       item2Role: "Estagiário de TI · Atendimento PopRua",
-      item2Desc: "Participei, através do meu estágio no INSS, de uma ação institucional de atendimento à população em situação de rua, levando orientações sobre benefícios previdenciários e assistenciais a pessoas em situação de vulnerabilidade social."
+      item2Desc: "Participei, através do meu estágio no INSS, de uma ação institucional do PopRuaJud de atendimento à população em situação de rua. Auxiliei na instalação dos computadores utilizados no atendimento, no download e configuração dos sistemas necessários, e no suporte ao atendimento à população em situação de rua no local."
     },
     contact: {
       badge: "SYS.CONNECT",

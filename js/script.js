@@ -310,21 +310,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const offset = CIRCUNFERENCE * (1 - pct / 100);
 
       ring.style.strokeDasharray  = CIRCUNFERENCE;
-      ring.style.strokeDashoffset = CIRCUNFERENCE;
+      ring.style.strokeDashoffset = offset;
 
-      requestAnimationFrame(() => {
-        ring.style.strokeDashoffset = offset;
-      });
-
-      if (label && !prefersReducedMotion) {
-        let current = 0;
-        const step = () => {
-          current = Math.min(current + 2, pct);
-          label.textContent = current + '%';
-          if (current < pct) requestAnimationFrame(step);
-        };
-        setTimeout(step, 100);
-      } else if (label) {
+      if (label) {
         label.textContent = pct + '%';
       }
     });
