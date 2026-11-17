@@ -1,136 +1,43 @@
-# Portfolio Profissional — Henrique Dias
+# Henrique Dias — Portfólio de Análise de Dados & BI
 
-Repositorio oficial do site pessoal e portfolio de Henrique Dias, estudante de Engenharia da Computacao na Universidade de Taubate (UNITAU) e Estagiario de TI no Instituto Nacional do Seguro Social (INSS).
-
-O site foi concebido como um "sistema operacional pessoal" — conceito NEXUS OS: ao acessar o portfolio, o visitante interage com uma interface tecnica imersiva, completa com sequencia de boot, canvas 3D de particulas, HUD em tempo real e terminal interativo.
+Repositório oficial do portfólio profissional de **Henrique Dias**, estudante de Engenharia da Computação na Universidade de Taubaté (UNITAU) e Estagiário de TI e Análise de Dados na Gerência Executiva do INSS.
 
 Site publicado: [henriquedias.vercel.app](https://henriquedias.vercel.app)
 
 ---
 
-## Funcionalidades
+## Conceito & Direção Visual
 
-- Alternancia instantanea de idiomas (PT / EN) com cobertura de 100% do conteudo, persistida via `localStorage`
-- Boot sequence animada com logs de sistema ao carregar a pagina pela primeira vez em cada sessao
-- Esfera de particulas interconectadas (Three.js) que reage ao movimento do mouse
-- Terminal interativo com suporte a comandos: `help`, `about`, `skills`, `projects`, `experience`, `contact`, `whoami`, `ls`, `pwd`, `clear`
-- HUD persistente exibindo coordenadas do cursor e o modulo atual em tempo real
-- Barra de progresso de scroll lateral
-- Progress rings animados na secao de formacao academica
-- Contadores numericos animados na secao Sobre
-- Tilt 3D nos cards de projetos ao passar o mouse
-- Heatmap de proficiencia de habilidades tecnicas com tooltips
-- Animacao TCP Handshake na secao de contato
-- Respeito total a `prefers-reduced-motion`: todos os efeitos pesados sao omitidos em dispositivos que solicitam menos movimento
-- Cursor customizado com inercia (GPU-accelerated via `transform: translate3d`)
-- Design responsivo com fallback mobile (canvas 3D substituido por gradiente estatico em telas abaixo de 768px)
+O portfólio foi concebido sob a premissa de **"o portfólio como um relatório bem diagramado"**: uma publicação técnica, limpa e editorial que coloca a linguagem de dados no centro da identidade visual.
+
+- **Conceito Visual:** Boletim Analítico & Editorial com diagramação assimétrica e estruturada.
+- **Paleta Cromática:** Fundo em linho mineral claro (`#F4F4F0`), tinta carvão profundo (`#121413`), bordas técnicas finas (`#D2D8D3`) e cor de destaque única em **Verde-Musgo Floresta** (`#214A36`). Sem degradês ou efeitos de brilho.
+- **Tipografia:** Títulos em serifa editorial (*Newsreader*), textos em sans neutra (*Manrope*) e números tabulares (`font-variant-numeric: tabular-nums`).
+- **Dados como Design:** Visualizações em SVG integradas com os números reais do modelo analítico do Bikes Store (61.254 registros, 214.783 unidades vendidas).
+- **Estudos de Caso:** Projetos estruturados com legendas padronizadas (*"Figura X"*) e encadeamento lógico **Problema → O que fiz → Resultado**.
+- **Acessibilidade e Desempenho:** 100% responsivo, conformidade WCAG 2.2 AA (alto contraste, navegação por teclado e semântica nativa), imagens convertidas em WebP e suporte mandatário a `prefers-reduced-motion`. Zero emojis e zero bibliotecas desnecessárias.
 
 ---
 
-## Tecnologias Utilizadas
+## Estrutura das Seções
 
-| Categoria | Tecnologia |
-|---|---|
-| Estrutura | HTML5 semantico |
-| Estilizacao | CSS3 Vanilla — Grid, Flexbox, Custom Properties |
-| Logica | JavaScript ES6+ Vanilla (sem frameworks) |
-| Canvas 3D | Three.js r128 |
-| Animacoes | GSAP 3.12.5 + ScrollTrigger |
-| Traducao | i18n customizado (dicionario em `translations.js`) |
-| Versionamento | Git / GitHub |
-| Deploy | Vercel |
-| Headers de seguranca | `vercel.json` (X-Frame-Options, X-Content-Type-Options, etc.) |
-
----
-
-## Secoes do Site
-
-| Modulo | Descricao |
-|---|---|
-| Hero | Identidade principal, terminal interativo e canvas 3D |
-| Sobre | Perfil, paragrafo descritivo e metricas animadas |
-| Experiencia | Timeline Git da experiencia no INSS com log stream |
-| Formacao | Cards de formacao com progress rings SVG |
-| Projetos | Cards estilo IDE com tilt 3D e links para GitHub |
-| Habilidades | Heatmap matrix de proficiencia com tooltips |
-| Extracurricular | Science Day UNITAU + Acao Social Institucional INSS |
-| Contato | Links GitHub / LinkedIn + animacao TCP Handshake |
+1. **Início (Hero):** Identificação profissional, disponibilidade para estágio/júnior (Taubaté, SP; presencial, híbrido ou remoto) e indicadores consolidados com gráfico em barras do Bikes Store.
+2. **Sobre:** Perfil técnico com foco em transformação de dados brutos em painéis de tomada de decisão rápida.
+3. **Projetos de Dados (Destaque Principal):**
+   - *Painel de Ordens Judiciais (INSS):* Fluxo analítico de padronização no Power Query e medidas DAX para ritmo diário de cumprimento de prazos judiciais.
+   - *Bikes Store — Dashboard de Vendas:* Análise comercial de mais de 61 mil registros no Power BI, Excel e Figma.
+4. **Experiência:** Atuação prática como estagiário na Gerência Executiva do INSS (projetos de dados, automação, suporte técnico e apoio na ação institucional PopRuaJud).
+5. **Competências:** Matriz técnica categorizada em Dados & BI, Programação/Banco de Dados, Desenvolvimento Web e TI/Suporte.
+6. **Desenvolvimento Web:** Projetos reais de apoio (Portal Ferreira Imóveis e Landing Page Advocacia Mariana).
+7. **Formação & Extracurricular:** Bacharelado em Engenharia da Computação (UNITAU, 6º semestre) e participação na ação PopRuaJud.
+8. **Contato:** E-mail, LinkedIn, GitHub e botão para download do currículo em PDF.
 
 ---
 
-## Estrutura de Arquivos
+## Tecnologias
 
-```
-portfolio/
-|-- index.html          # Estrutura HTML semantica com data-i18n e markup NEXUS OS
-|-- styles.css          # Design system completo: tokens CSS, HUD, cursor, animacoes
-|-- vercel.json         # Configuracao de deploy e headers de seguranca HTTP
-|-- .gitignore          # Regras de exclusao de arquivos sensiveis e temporarios
-|-- README.md           # Documentacao do repositorio
-|-- js/
-    |-- translations.js # Dicionario de traducoes PT e EN (todas as secoes)
-    |-- boot.js         # Sequencia de boot animada (NEXUS OS v2.6)
-    |-- nexus3d.js      # Canvas Three.js: esfera de particulas + fallback 2D
-    |-- script.js       # Sistema principal: i18n, terminal, HUD, GSAP, cursor
-```
-
----
-
-## Como Rodar Localmente
-
-O projeto nao possui dependencias de build. Basta servir os arquivos estaticos:
-
-**Python (recomendado):**
-```bash
-cd portfolio
-python -m http.server 8080
-# Acesse: http://localhost:8080
-```
-
-**Node.js:**
-```bash
-npx http-server . -p 8080
-```
-
-**VS Code:** instale a extensao "Live Server" e clique em "Go Live" no `index.html`.
-
-> Abrir o `index.html` diretamente no navegador via `file://` pode bloquear
-> modulos JavaScript por restricoes de CORS. Use sempre um servidor local.
-
----
-
-## Projetos em Destaque
-
-- [Portal Ferreira Imoveis](https://github.com/henriqueDias57/ferreira-imoveis) — Portal institucional e sistema de gestao imobiliaria.
-- [Landing Page Advocacia Mariana](https://github.com/henriqueDias57/site---Advogada-Mariana-) — Landing page profissional para escritorio de advocacia.
-
----
-
-## Seguranca
-
-- Nenhuma chave de API, token ou credencial esta presente no codigo-fonte ou no historico de commits.
-- Headers HTTP de seguranca configurados via `vercel.json`: X-Content-Type-Options, X-Frame-Options, X-XSS-Protection, Referrer-Policy, Permissions-Policy.
-- HTTPS automatico via Vercel.
-- Input do terminal restrito por `switch/case` — sem uso de `eval()` ou `innerHTML` de dados do usuario.
-
----
-
-## Performance
-
-- Three.js com `pixelRatio` fixo em 1x e throttle de 60fps via `requestAnimationFrame`
-- Canvas 3D pausado via `IntersectionObserver` quando fora da viewport
-- Scroll 100% nativo (sem bibliotecas de interceptacao de scroll)
-- Cursor customizado usa `transform: translate3d` (GPU-accelerated, sem layout reflow)
-- `backdrop-filter` removido de todos os elementos fixos
-- Fallback automatico 2D em dispositivos sem WebGL ou com tela abaixo de 768px
-
----
-
-## Contato
-
-- LinkedIn: [linkedin.com/in/henrique-dias-5411a8355](https://www.linkedin.com/in/henrique-dias-5411a8355/)
-- GitHub: [github.com/henriqueDias57](https://github.com/henriqueDias57/)
-
----
-
-(c) 2026 Henrique Dias. Todos os direitos reservados.
+- **Estrutura:** HTML5 Semântico
+- **Estilização:** CSS3 puro (Variáveis CSS, CSS Grid, Flexbox)
+- **Comportamento:** JavaScript Vanilla (Navegação mobile acessível, observador de seção ativa)
+- **Assets:** Gráficos vetoriais em SVG e imagens comprimidas em WebP
+- **Hospedagem & Deploy:** Vercel (deploy estático contínuo via GitHub)
