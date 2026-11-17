@@ -1,43 +1,56 @@
-# Henrique Dias — Portfólio de Análise de Dados & BI
+# Henrique Dias — Foco em Análise de Dados & BI
 
-Repositório oficial do portfólio profissional de **Henrique Dias**, estudante de Engenharia da Computação na Universidade de Taubaté (UNITAU) e Estagiário de TI e Análise de Dados na Gerência Executiva do INSS.
+Repositório oficial do portfólio profissional de **Henrique Dias**, estudante de Engenharia da Computação na Universidade de Taubaté (UNITAU) e Estagiário de TI na Gerência Executiva do INSS.
 
 Site publicado: [henriquedias.vercel.app](https://henriquedias.vercel.app)
 
 ---
 
-## Conceito & Direção Visual
+## Posicionamento & Foco Profissional
 
-O portfólio foi concebido sob a premissa de **"o portfólio como um relatório bem diagramado"**: uma publicação técnica, limpa e editorial que coloca a linguagem de dados no centro da identidade visual.
+O portfólio destaca meu direcionamento profissional para a área de **Análise de Dados e Business Intelligence (Power BI, DAX, Power Query)**, mantendo a autenticidade sobre minha atuação prática:
+- **Atuação atual:** Estagiário de TI no INSS (suporte técnico, manutenção de computadores e sistemas, e apoio na ação institucional PopRuaJud).
+- **Projetos em dados:** Desenvolvimento de painel em Power BI para acompanhamento de ordens judiciais de 30 dias (projeto desenvolvido durante o estágio) e análise comercial histórica com mais de 61 mil registros da Bikes Store (projeto prático).
+- **Competências em código e web:** Base sólida em Python, SQL, automação de processos, HTML, CSS e JavaScript.
 
-- **Conceito Visual:** Boletim Analítico & Editorial com diagramação assimétrica e estruturada.
-- **Paleta Cromática:** Fundo em linho mineral claro (`#F4F4F0`), tinta carvão profundo (`#121413`), bordas técnicas finas (`#D2D8D3`) e cor de destaque única em **Verde-Musgo Floresta** (`#214A36`). Sem degradês ou efeitos de brilho.
-- **Tipografia:** Títulos em serifa editorial (*Newsreader*), textos em sans neutra (*Manrope*) e números tabulares (`font-variant-numeric: tabular-nums`).
-- **Dados como Design:** Visualizações em SVG integradas com os números reais do modelo analítico do Bikes Store (61.254 registros, 214.783 unidades vendidas).
-- **Estudos de Caso:** Projetos estruturados com legendas padronizadas (*"Figura X"*) e encadeamento lógico **Problema → O que fiz → Resultado**.
-- **Acessibilidade e Desempenho:** 100% responsivo, conformidade WCAG 2.2 AA (alto contraste, navegação por teclado e semântica nativa), imagens convertidas em WebP e suporte mandatário a `prefers-reduced-motion`. Zero emojis e zero bibliotecas desnecessárias.
+---
+
+## Conceito & Direção Visual (Boletim Analítico)
+
+A interface adota a estética de **"boletim analítico e editorial"**, com forte contraste, ritmo cromático por seções e visualização de dados como parte central do design:
+
+- **Ritmo de Fundos Sólidos:** Alternância fluida entre três fundos sólidos (Linho mineral `#F4F4F0`, Areia claro `#EDE8DF` e Verde-floresta escuro `#163827`), sem degradês.
+- **Segunda Cor de Apoio:** Acentos quentes em Terracota (`#C05621`) para realces sólidos estilo marca-texto, tags e valores numéricos destacados.
+- **Tipografia:** Títulos em serifa clássica (*Newsreader*), textos em sans neutra (*Manrope*) e números em formatação tabular (*tabular-nums*).
+- **Gráficos com Dados Reais:** Gráfico SVG de barras no Hero baseado nos dados reais apurados do Bikes Store (61.254 registros, 214.783 unidades vendidas, mix de 49,27% Serviços, 30,29% Componentes e 20,44% Bikes).
+- **Faixa de Métricas Gigantes:** Bloco de impacto entre o Hero e o Sobre destacando os volumes de dados analisados.
+- **Estudos de Caso:** Layouts alternados de largura total, com números gigantes de fundo, pull quotes em serifa e narrativa estruturada verticalmente em `01. Problema → 02. O que fiz → 03. Resultado`.
+- **Matriz de Competências:** Organização editorial "Ferramenta × Projeto" demonstrando onde Power Query, DAX, Power BI, Excel e Figma foram aplicados na prática, com colunas visíveis para Programação, Web e TI.
+- **Acessibilidade:** Padrões WCAG 2.2 AA (alto contraste, navegação por teclado, rótulos claros e respeito a `prefers-reduced-motion`).
+- **Zero Emojis e Zero Efeitos Clichês:** Sem Three.js, sem partículas, sem cursores customizados, sem contadores animados, sem carrosséis.
 
 ---
 
 ## Estrutura das Seções
 
-1. **Início (Hero):** Identificação profissional, disponibilidade para estágio/júnior (Taubaté, SP; presencial, híbrido ou remoto) e indicadores consolidados com gráfico em barras do Bikes Store.
-2. **Sobre:** Perfil técnico com foco em transformação de dados brutos em painéis de tomada de decisão rápida.
-3. **Projetos de Dados (Destaque Principal):**
-   - *Painel de Ordens Judiciais (INSS):* Fluxo analítico de padronização no Power Query e medidas DAX para ritmo diário de cumprimento de prazos judiciais.
-   - *Bikes Store — Dashboard de Vendas:* Análise comercial de mais de 61 mil registros no Power BI, Excel e Figma.
-4. **Experiência:** Atuação prática como estagiário na Gerência Executiva do INSS (projetos de dados, automação, suporte técnico e apoio na ação institucional PopRuaJud).
-5. **Competências:** Matriz técnica categorizada em Dados & BI, Programação/Banco de Dados, Desenvolvimento Web e TI/Suporte.
-6. **Desenvolvimento Web:** Projetos reais de apoio (Portal Ferreira Imóveis e Landing Page Advocacia Mariana).
-7. **Formação & Extracurricular:** Bacharelado em Engenharia da Computação (UNITAU, 6º semestre) e participação na ação PopRuaJud.
-8. **Contato:** E-mail, LinkedIn, GitHub e botão para download do currículo em PDF.
+1. **Início (Hero):** Título com contraste tipográfico (*Henrique Dias — Foco em Análise de Dados & BI*), subtítulo institucional e gráfico analítico SVG do Bikes Store.
+2. **Faixa de Números:** 4 métricas consolidadas em fundo escuro floresta.
+3. **Sobre:** Perfil factual, foto profissional com moldura sólida deslocada e ficha técnica.
+4. **Dados & BI (Projetos em Destaque):**
+   - *Painel de Ordens Judiciais:* Projeto desenvolvido durante o estágio no INSS, com diagrama de arquitetura técnica em SVG e regras de ritmo em DAX.
+   - *Bikes Store — Dashboard de Vendas:* Análise histórica de faturamento com 61 mil linhas e relatório em duas páginas.
+5. **Experiência:** Atuação prática como Estagiário de TI no INSS (suporte técnico, ação PopRuaJud e projeto do painel de prazos).
+6. **Competências:** Matriz editorial ferramenta × projeto e painel de programação, web e suporte.
+7. **Sites & Código (Projetos Web):** Portal Ferreira Imóveis e Landing Page Advocacia Mariana.
+8. **Formação & Extracurricular:** Engenharia da Computação (UNITAU) e PopRuaJud.
+9. **Contato:** Bloco em largura total com e-mail ampliado, canais e link para download do currículo em PDF.
 
 ---
 
 ## Tecnologias
 
 - **Estrutura:** HTML5 Semântico
-- **Estilização:** CSS3 puro (Variáveis CSS, CSS Grid, Flexbox)
+- **Estilização:** CSS3 Vanilla (Variáveis CSS, CSS Grid, Flexbox)
 - **Comportamento:** JavaScript Vanilla (Navegação mobile acessível, observador de seção ativa)
 - **Assets:** Gráficos vetoriais em SVG e imagens comprimidas em WebP
 - **Hospedagem & Deploy:** Vercel (deploy estático contínuo via GitHub)
