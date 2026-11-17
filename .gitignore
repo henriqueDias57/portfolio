@@ -17,3 +17,6 @@ node_modules/
 # Logs & Temp files
 *.log
 .cache
+
+# Skills directory protection
+antigravity-awesome-skills/
