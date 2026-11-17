@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" width="100%" height="100%" style="background-color: #F8F9F8; font-family: 'Manrope', -apple-system, sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#214A36"/>
+    </marker>
+  </defs>
+
+  <!-- Moldura Geral Técnica -->
+  <rect x="16" y="16" width="888" height="348" rx="4" fill="#FFFFFF" stroke="#D2D8D3" stroke-width="1.2"/>
+  
+  <text x="44" y="52" font-size="11" font-weight="700" letter-spacing="1.2" fill="#214A36">ESTRUTURA ANALÍTICA DE DADOS // PROCESSO OPERACIONAL</text>
+  <text x="44" y="74" font-size="15" font-weight="600" fill="#121413">Pipeline do Painel de Monitoramento de Prazos de Ordens Judiciais</text>
+  <line x1="44" y1="92" x2="876" y2="92" stroke="#E5E8E5" stroke-width="1"/>
+
+  <!-- Estágio 1: Origem dos Dados -->
+  <g transform="translate(44, 114)">
+    <rect width="180" height="220" rx="3" fill="#FBFBF9" stroke="#D2D8D3" stroke-width="1"/>
+    <rect x="0" y="0" width="180" height="30" rx="3" fill="#F0F2F0"/>
+    <text x="14" y="20" font-size="10" font-weight="700" fill="#4E5651" letter-spacing="0.8">01. ORIGEM DOS DADOS</text>
+    
+    <text x="14" y="56" font-size="13" font-weight="700" fill="#121413">Planilhas por Lote</text>
+    <text x="14" y="80" font-size="11" fill="#4E5651">
+      <tspan x="14" dy="0">• Cerca de 80 processos/lote</tspan>
+      <tspan x="14" dy="20">• Prazo judicial de 30 dias</tspan>
+      <tspan x="14" dy="20">• Acompanhamento manual</tspan>
+      <tspan x="14" dy="20">• Dados sem centralização</tspan>
+    </text>
+
+    <rect x="12" y="166" width="156" height="42" rx="2" fill="#FFFFFF" stroke="#D2D8D3" stroke-width="1"/>
+    <text x="20" y="184" font-size="9" font-weight="700" fill="#804B35" letter-spacing="0.5">CENÁRIO ANTERIOR</text>
+    <text x="20" y="198" font-size="10" fill="#5A615C">Conferência ponto a ponto</text>
+  </g>
+
+  <!-- Conector 1 -> 2 -->
+  <line x1="234" y1="224" x2="258" y2="224" stroke="#214A36" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- Estágio 2: Power Query -->
+  <g transform="translate(266, 114)">
+    <rect width="180" height="220" rx="3" fill="#FBFBF9" stroke="#D2D8D3" stroke-width="1"/>
+    <rect x="0" y="0" width="180" height="30" rx="3" fill="#F0F2F0"/>
+    <text x="14" y="20" font-size="10" font-weight="700" fill="#4E5651" letter-spacing="0.8">02. TRATAMENTO (ETL)</text>
+    
+    <text x="14" y="56" font-size="13" font-weight="700" fill="#121413">Power Query</text>
+    <text x="14" y="80" font-size="11" fill="#4E5651">
+      <tspan x="14" dy="0">• Padronização de datas</tspan>
+      <tspan x="14" dy="20">• Tratamento de status</tspan>
+      <tspan x="14" dy="20">• Limpeza e tipagem</tspan>
+      <tspan x="14" dy="20">• Anonimização integral</tspan>
+    </text>
+
+    <rect x="12" y="166" width="156" height="42" rx="2" fill="#FFFFFF" stroke="#214A36" stroke-width="1"/>
+    <text x="20" y="184" font-size="9" font-weight="700" fill="#214A36" letter-spacing="0.5">BENEFÍCIO TÉCNICO</text>
+    <text x="20" y="198" font-size="10" fill="#121413">Dados unificados e íntegros</text>
+  </g>
+
+  <!-- Conector 2 -> 3 -->
+  <line x1="456" y1="224" x2="480" y2="224" stroke="#214A36" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- Estágio 3: Modelagem DAX -->
+  <g transform="translate(488, 114)">
+    <rect width="180" height="220" rx="3" fill="#FBFBF9" stroke="#D2D8D3" stroke-width="1"/>
+    <rect x="0" y="0" width="180" height="30" rx="3" fill="#F0F2F0"/>
+    <text x="14" y="20" font-size="10" font-weight="700" fill="#4E5651" letter-spacing="0.8">03. MODELAGEM &amp; DAX</text>
+    
+    <text x="14" y="56" font-size="13" font-weight="700" fill="#121413">Regras &amp; Ritmo</text>
+    <text x="14" y="80" font-size="11" fill="#4E5651">
+      <tspan x="14" dy="0">• Cálculo: Dias úteis restantes</tspan>
+      <tspan x="14" dy="20">• Medida: Ritmo diário</tspan>
+      <tspan x="14" dy="20">• Demandas pendentes</tspan>
+      <tspan x="14" dy="20">• Matriz de risco por lote</tspan>
+    </text>
+
+    <rect x="12" y="166" width="156" height="42" rx="2" fill="#FFFFFF" stroke="#214A36" stroke-width="1"/>
+    <text x="20" y="184" font-size="9" font-weight="700" fill="#214A36" letter-spacing="0.5">MÉTRICA CHAVE</text>
+    <text x="20" y="198" font-size="10" fill="#121413">Ritmo = Pendência / Dias</text>
+  </g>
+
+  <!-- Conector 3 -> 4 -->
+  <line x1="678" y1="224" x2="702" y2="224" stroke="#214A36" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- Estágio 4: Power BI / Decisão -->
+  <g transform="translate(710, 114)">
+    <rect width="166" height="220" rx="3" fill="#214A36" stroke="#173B29" stroke-width="1"/>
+    <rect x="0" y="0" width="166" height="30" rx="3" fill="#173B29"/>
+    <text x="14" y="20" font-size="10" font-weight="700" fill="#E2EBE5" letter-spacing="0.8">04. POWER BI DASHBOARD</text>
+    
+    <text x="14" y="56" font-size="13" font-weight="700" fill="#FFFFFF">Visão de Gargalos</text>
+    <text x="14" y="80" font-size="11" fill="#D5E0D9">
+      <tspan x="14" dy="0">• Alertas visuais de prazo</tspan>
+      <tspan x="14" dy="20">• Identificação de risco</tspan>
+      <tspan x="14" dy="20">• Apoio à liderança</tspan>
+      <tspan x="14" dy="20">• Decisão ágil e clara</tspan>
+    </text>
+
+    <rect x="12" y="166" width="142" height="42" rx="2" fill="#173B29" stroke="#336B50" stroke-width="1"/>
+    <text x="20" y="184" font-size="9" font-weight="700" fill="#A8D5BC" letter-spacing="0.5">RESULTADO OBTIDO</text>
+    <text x="20" y="198" font-size="10" fill="#FFFFFF">Prevenção de atrasos</text>
+  </g>
+</svg>
