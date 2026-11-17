@@ -10,7 +10,7 @@
   --bg-primary: #F4F4F0;
   --bg-card: #FFFFFF;
   --bg-subtle: #ECECE7;
-  --bg-header: rgba(244, 244, 240, 0.94);
+  --bg-header: #F4F4F0;
   --text-primary: #121413;
   --text-muted: #4E5651;
   --text-subtle: #6D7770;
@@ -166,8 +166,7 @@ a:hover {
   z-index: 50;
   background-color: var(--bg-header);
   border-bottom: 1px solid var(--border-color);
-  backdrop-filter: blur(8px);
-}
+  }
 
 .header-inner {
   display: flex;
